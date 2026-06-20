@@ -193,31 +193,31 @@ Para tareas críticas, se recomienda un flujo de **doble validación**:
 
 ### 4.1 Tareas
 
-- [ ] **0.1** Inicializar repositorio Git en `/home/daniel/006_LOGISTICA`
-- [ ] **0.2** Crear proyecto Next.js 15 con App Router y TypeScript
+- [x] **0.1** Inicializar repositorio Git en `/home/daniel/006_LOGISTICA`
+- [x] **0.2** Crear proyecto Next.js 15 con App Router y TypeScript
   ```bash
   npx -y create-next-app@latest ./ --typescript --tailwind --eslint --app --src-dir --import-alias "@/*" --use-npm
   ```
-- [ ] **0.3** Instalar dependencias core:
+- [x] **0.3** Instalar dependencias core:
   ```bash
   npm install @supabase/supabase-js @supabase/ssr zustand zod react-hook-form @hookform/resolvers
   npm install @fullcalendar/core @fullcalendar/react @fullcalendar/daygrid @fullcalendar/timegrid @fullcalendar/interaction @fullcalendar/list
   npm install date-fns lucide-react recharts sonner
   npm install -D @types/node supabase
   ```
-- [ ] **0.4** Inicializar shadcn/ui:
+- [x] **0.4** Inicializar shadcn/ui:
   ```bash
   npx -y shadcn@latest init
   npx -y shadcn@latest add button card dialog form input label select table tabs badge calendar dropdown-menu sheet toast popover command separator avatar
   ```
-- [ ] **0.5** Configurar Supabase:
+- [x] **0.5** Configurar Supabase:
   - Crear proyecto en Supabase Dashboard
   - Obtener `SUPABASE_URL` y `SUPABASE_ANON_KEY`
   - Crear archivo `.env.local`
-- [ ] **0.6** Configurar estructura base de carpetas (ver [Sección 16](#16-estructura-de-archivos-del-proyecto))
-- [ ] **0.7** Configurar ESLint, Prettier y convenciones de código
-- [ ] **0.8** Crear layout raíz con sidebar de navegación y tema oscuro/claro
-- [ ] **0.9** Configurar Git: `.gitignore`, primer commit
+- [x] **0.6** Configurar estructura base de carpetas (ver [Sección 16](#16-estructura-de-archivos-del-proyecto))
+- [x] **0.7** Configurar ESLint, Prettier y convenciones de código
+- [x] **0.8** Crear layout raíz con sidebar de navegación y tema oscuro/claro
+- [x] **0.9** Configurar Git: `.gitignore`, primer commit
 
 ### 4.2 Entregable
 Proyecto Next.js funcional corriendo en `localhost:3000` con navegación básica, tema configurado y conexión a Supabase verificada.
