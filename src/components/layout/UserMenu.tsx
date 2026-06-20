@@ -11,7 +11,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
 
 export function UserMenu() {
   const { user, logout } = useAuth()
@@ -28,14 +27,12 @@ export function UserMenu() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        <Button variant="ghost" size="icon" className="rounded-full">
-          <Avatar className="h-8 w-8">
-            <AvatarFallback className="text-xs font-medium">
-              {getInitials()}
-            </AvatarFallback>
-          </Avatar>
-        </Button>
+      <DropdownMenuTrigger className="cursor-pointer rounded-full hover:opacity-80 transition-opacity">
+        <Avatar className="h-8 w-8">
+          <AvatarFallback className="text-xs font-medium">
+            {getInitials()}
+          </AvatarFallback>
+        </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuLabel>

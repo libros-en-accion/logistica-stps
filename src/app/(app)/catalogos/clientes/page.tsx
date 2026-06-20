@@ -32,12 +32,19 @@ export default function ClientesPage() {
   useEffect(() => { crud.fetchAll() }, [])
 
   async function handleSubmit(data: Record<string, unknown>) {
-    if (crud.selected) {
-      await crud.update(crud.selected.id, data)
-    } else {
-      await crud.create(data)
+    const isEdit = !!crud.selected
+    const mensaje = isEdit
+      ? '¿Está seguro de que desea guardar las modificaciones realizadas?'
+      : '¿Está seguro de que desea registrar este nuevo cliente?'
+
+    if (confirm(mensaje)) {
+      if (isEdit) {
+        await crud.update(crud.selected!.id, data)
+      } else {
+        await crud.create(data)
+      }
+      crud.closeDialog()
     }
-    crud.closeDialog()
   }
 
   const columnsWithActions: Column<Cliente>[] = [
@@ -90,6 +97,8 @@ export default function ClientesPage() {
         open={crud.dialogOpen}
         onOpenChange={crud.setDialogOpen}
         title={crud.selected ? 'Editar Cliente' : 'Nuevo Cliente'}
+        formId="cliente-form"
+        loading={crud.loading}
       >
         <ClienteForm
           defaultValues={nullToUndefined(crud.selected) as any}

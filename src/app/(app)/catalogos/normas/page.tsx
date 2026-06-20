@@ -30,12 +30,19 @@ export default function NormasPage() {
   useEffect(() => { crud.fetchAll() }, [])
 
   async function handleSubmit(data: Record<string, unknown>) {
-    if (crud.selected) {
-      await crud.update(crud.selected.id, data)
-    } else {
-      await crud.create(data)
+    const isEdit = !!crud.selected
+    const mensaje = isEdit
+      ? '¿Está seguro de que desea guardar las modificaciones realizadas?'
+      : '¿Está seguro de que desea registrar esta nueva norma?'
+
+    if (confirm(mensaje)) {
+      if (isEdit) {
+        await crud.update(crud.selected!.id, data)
+      } else {
+        await crud.create(data)
+      }
+      crud.closeDialog()
     }
-    crud.closeDialog()
   }
 
   const columnsWithActions: Column<NormaSTPS>[] = [
@@ -87,6 +94,8 @@ export default function NormasPage() {
         open={crud.dialogOpen}
         onOpenChange={crud.setDialogOpen}
         title={crud.selected ? 'Editar Norma' : 'Nueva Norma'}
+        formId="norma-form"
+        loading={crud.loading}
       >
         <NormaForm
           defaultValues={nullToUndefined(crud.selected) as any}

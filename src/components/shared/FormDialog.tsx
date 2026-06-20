@@ -19,6 +19,7 @@ interface FormDialogProps {
   submitLabel?: string
   onSubmit?: () => void
   loading?: boolean
+  formId?: string
 }
 
 export function FormDialog({
@@ -30,6 +31,7 @@ export function FormDialog({
   submitLabel = 'Guardar',
   onSubmit,
   loading = false,
+  formId,
 }: FormDialogProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -43,13 +45,18 @@ export function FormDialog({
           <Button variant="outline" onClick={() => onOpenChange(false)}>
             Cancelar
           </Button>
-          {onSubmit && (
+          {formId ? (
+            <Button type="submit" form={formId} disabled={loading}>
+              {loading ? 'Guardando...' : submitLabel}
+            </Button>
+          ) : onSubmit ? (
             <Button onClick={onSubmit} disabled={loading}>
               {loading ? 'Guardando...' : submitLabel}
             </Button>
-          )}
+          ) : null}
         </DialogFooter>
       </DialogContent>
     </Dialog>
   )
 }
+

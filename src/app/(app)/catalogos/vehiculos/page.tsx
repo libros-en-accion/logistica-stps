@@ -40,12 +40,19 @@ export default function VehiculosPage() {
   useEffect(() => { crud.fetchAll() }, [])
 
   async function handleSubmit(data: Record<string, unknown>) {
-    if (crud.selected) {
-      await crud.update(crud.selected.id, data)
-    } else {
-      await crud.create(data)
+    const isEdit = !!crud.selected
+    const mensaje = isEdit
+      ? '¿Está seguro de que desea guardar las modificaciones realizadas?'
+      : '¿Está seguro de que desea registrar este nuevo vehículo?'
+
+    if (confirm(mensaje)) {
+      if (isEdit) {
+        await crud.update(crud.selected!.id, data)
+      } else {
+        await crud.create(data)
+      }
+      crud.closeDialog()
     }
-    crud.closeDialog()
   }
 
   const columnsWithActions: Column<Vehiculo>[] = [
@@ -98,6 +105,8 @@ export default function VehiculosPage() {
         open={crud.dialogOpen}
         onOpenChange={crud.setDialogOpen}
         title={crud.selected ? 'Editar Vehículo' : 'Nuevo Vehículo'}
+        formId="vehiculo-form"
+        loading={crud.loading}
       >
         <VehiculoForm
           defaultValues={nullToUndefined(crud.selected) as any}

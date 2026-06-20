@@ -26,12 +26,19 @@ export default function TecnicosPage() {
   useEffect(() => { crud.fetchAll() }, [])
 
   async function handleSubmit(data: Record<string, unknown>) {
-    if (crud.selected) {
-      await crud.update(crud.selected.id, data)
-    } else {
-      await crud.create(data)
+    const isEdit = !!crud.selected
+    const mensaje = isEdit
+      ? '¿Está seguro de que desea guardar las modificaciones realizadas?'
+      : '¿Está seguro de que desea registrar este nuevo técnico?'
+
+    if (confirm(mensaje)) {
+      if (isEdit) {
+        await crud.update(crud.selected!.id, data)
+      } else {
+        await crud.create(data)
+      }
+      crud.closeDialog()
     }
-    crud.closeDialog()
   }
 
   const columnsWithActions: Column<Tecnico>[] = [
@@ -84,6 +91,8 @@ export default function TecnicosPage() {
         onOpenChange={crud.setDialogOpen}
         title={crud.selected ? 'Editar Técnico' : 'Nuevo Técnico'}
         description={crud.selected ? 'Modifica los datos del técnico' : 'Registra un nuevo técnico evaluador'}
+        formId="tecnico-form"
+        loading={crud.loading}
       >
         <TecnicoForm
           defaultValues={nullToUndefined(crud.selected) as any}

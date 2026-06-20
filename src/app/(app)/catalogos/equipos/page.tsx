@@ -41,7 +41,6 @@ const columns: Column<EquipoMedicion>[] = [
       )
     },
   },
-  { key: 'estado', label: 'Estado', render: (e) => <StatusBadge status={e.estado} /> },
 ]
 
 export default function EquiposPage() {
@@ -50,12 +49,19 @@ export default function EquiposPage() {
   useEffect(() => { crud.fetchAll() }, [])
 
   async function handleSubmit(data: Record<string, unknown>) {
-    if (crud.selected) {
-      await crud.update(crud.selected.id, data)
-    } else {
-      await crud.create(data)
+    const isEdit = !!crud.selected
+    const mensaje = isEdit
+      ? '¿Está seguro de que desea guardar las modificaciones realizadas?'
+      : '¿Está seguro de que desea registrar este nuevo equipo?'
+
+    if (confirm(mensaje)) {
+      if (isEdit) {
+        await crud.update(crud.selected!.id, data)
+      } else {
+        await crud.create(data)
+      }
+      crud.closeDialog()
     }
-    crud.closeDialog()
   }
 
   const columnsWithActions: Column<EquipoMedicion>[] = [
@@ -108,6 +114,8 @@ export default function EquiposPage() {
         open={crud.dialogOpen}
         onOpenChange={crud.setDialogOpen}
         title={crud.selected ? 'Editar Equipo' : 'Nuevo Equipo'}
+        formId="equipo-form"
+        loading={crud.loading}
       >
         <EquipoForm
           defaultValues={nullToUndefined(crud.selected) as any}
@@ -118,4 +126,3 @@ export default function EquiposPage() {
     </div>
   )
 }
-
