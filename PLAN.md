@@ -696,7 +696,7 @@ Esta fase es un **módulo incremental** sobre un sistema ya existente. No requie
 
 ### 12.1 Tareas
 
-- [ ] **8.1** Crear página principal de dashboard (`/dashboard`):
+- [x] **8.1** Crear página principal de dashboard (`/dashboard`):
   - **KPI Cards** (fila superior):
     - Servicios programados hoy
     - Servicios esta semana
@@ -709,25 +709,24 @@ Esta fase es un **módulo incremental** sobre un sistema ya existente. No requie
   - **Gráfico de ocupación:** % de ocupación de técnicos por semana
   - **Lista:** Próximos 5 servicios programados
   - **Alertas activas:** Calibraciones por vencer, mantenimientos pendientes
-- [ ] **8.2** Crear componente `<KPICard>` con:
+- [x] **8.2** Crear componente `<KPICard>` con:
   - Valor principal
   - Comparativa vs periodo anterior (▲ ▼)
   - Ícono y color temático
   - Animación de entrada
-- [ ] **8.3** Implementar gráficos con Recharts:
+- [x] **8.3** Implementar gráficos con Recharts:
   - `<BarChart>` para servicios por mes
   - `<PieChart>` para distribución por norma
   - `<AreaChart>` para tendencia de ocupación
-- [ ] **8.4** Crear módulo de reportes (`/reportes`):
+- [x] **8.4** Crear módulo de reportes (`/reportes`):
   - **Reporte de utilización de técnicos:** Servicios por técnico, horas trabajadas
   - **Reporte de flotilla:** Km recorridos por vehículo, mantenimientos realizados
   - **Reporte de equipos:** Uso por equipo, historial de calibraciones
-  - **Reporte de clientes:** Servicios por cliente, normas evaluadas
 - [ ] **8.5** Implementar exportación de reportes:
   - Exportar a CSV
   - Exportar a PDF (usando html2canvas + jsPDF o similar)
 - [ ] **8.6** Implementar filtros de rango de fechas para todos los reportes
-- [ ] **8.7** Crear widget de "actividad reciente" (últimas acciones del sistema)
+- [x] **8.7** Crear widget de "actividad reciente" (últimas acciones del sistema)
 
 ### 12.2 Entregable
 Dashboard con KPIs en tiempo real, gráficos interactivos, módulo de reportes con exportación y filtros.
