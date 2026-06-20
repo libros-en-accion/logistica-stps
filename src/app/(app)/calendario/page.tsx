@@ -1,11 +1,19 @@
 'use client'
 
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
-import { CalendarView } from '@/components/calendario/CalendarView'
 import { CalendarFilters } from '@/components/calendario/CalendarFilters'
 import { EventDetailPanel } from '@/components/calendario/EventDetailPanel'
 import { toast } from 'sonner'
+
+const CalendarView = dynamic(
+  () => import('@/components/calendario/CalendarView').then((m) => m.CalendarView),
+  {
+    loading: () => <div className="h-96 rounded-lg border bg-muted/20 animate-pulse" />,
+    ssr: false,
+  }
+)
 
 interface PanelEvent {
   id: string

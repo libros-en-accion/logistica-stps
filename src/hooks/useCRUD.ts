@@ -41,6 +41,7 @@ export function useCRUD<T extends { id: string }>({
 
   const create = useCallback(
     async (values: Record<string, unknown>) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { error } = await supabase.from(table).insert(values as any)
       if (error) {
         toast.error(`Error al crear: ${error.message}`)
@@ -55,6 +56,7 @@ export function useCRUD<T extends { id: string }>({
 
   const update = useCallback(
     async (id: string, values: Record<string, unknown>) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { error } = await supabase.from(table).update(values as any).eq('id', id)
       if (error) {
         toast.error(`Error al actualizar: ${error.message}`)

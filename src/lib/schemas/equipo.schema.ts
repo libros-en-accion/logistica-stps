@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { differenceInDays } from 'date-fns'
 
 export const equipoSchema = z.object({
   id_interno: z.string().min(1, 'ID interno requerido'),

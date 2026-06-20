@@ -111,7 +111,11 @@ export default function BloqueosPage() {
     setEquipos(e.data ?? [])
   }
 
-  useEffect(() => { load(); loadCatalogos() }, [])
+  useEffect(() => {
+    load()
+    loadCatalogos()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   async function handleSubmit() {
     setSaving(true)

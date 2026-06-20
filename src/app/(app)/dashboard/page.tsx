@@ -1,11 +1,20 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { StatsCards } from '@/components/dashboard/StatsCards'
-import { ServiciosChart } from '@/components/dashboard/ServiciosChart'
-import { OcupacionChart } from '@/components/dashboard/OcupacionChart'
 import { AlertasList } from '@/components/dashboard/AlertasList'
 import { ActividadReciente } from '@/components/dashboard/ActividadReciente'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+
+const ServiciosChart = dynamic(
+  () => import('@/components/dashboard/ServiciosChart').then((m) => m.ServiciosChart),
+  { ssr: false, loading: () => <div className="h-48 rounded bg-muted/20 animate-pulse" /> }
+)
+
+const OcupacionChart = dynamic(
+  () => import('@/components/dashboard/OcupacionChart').then((m) => m.OcupacionChart),
+  { ssr: false, loading: () => <div className="h-48 rounded bg-muted/20 animate-pulse" /> }
+)
 
 export default function DashboardPage() {
   return (

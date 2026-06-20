@@ -71,10 +71,6 @@ export function CalendarView({
   const [events, setEvents] = useState<CalendarEvent[]>([])
   const supabase = createClient()
 
-  useEffect(() => {
-    cargarEventos()
-  }, [filterRecursoId])
-
   async function cargarEventos() {
     const todos: CalendarEvent[] = []
 
@@ -176,6 +172,11 @@ export function CalendarView({
 
     setEvents(todos)
   }
+
+  useEffect(() => {
+    cargarEventos()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterRecursoId])
 
   function handleEventClick(info: EventClickArg) {
     const ev = info.event

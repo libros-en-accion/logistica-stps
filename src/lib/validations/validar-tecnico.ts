@@ -79,6 +79,7 @@ export async function validarDisponibilidadTecnico(
     .gt('ordenes_servicio.fecha_inicio', rango.inicio.toISOString())
 
   if (ordenId) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     query = query.neq('orden_servicio_id', ordenId) as any
   }
 
@@ -86,6 +87,7 @@ export async function validarDisponibilidadTecnico(
 
   if (asignaciones && asignaciones.length > 0) {
     for (const a of asignaciones) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const os = (a as any).ordenes_servicio
       errores.push({
         tipo: 'tecnico',
