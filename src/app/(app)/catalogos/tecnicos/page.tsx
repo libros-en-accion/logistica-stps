@@ -84,6 +84,7 @@ export default function TecnicosPage() {
             <Plus className="mr-1 h-4 w-4" /> Agregar
           </Button>
         }
+        exportFilename="tecnicos"
       />
 
       <FormDialog

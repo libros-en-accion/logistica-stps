@@ -2077,7 +2077,7 @@
       "label": "DataTableProps",
       "file_type": "code",
       "source_file": "src/components/shared/DataTable.tsx",
-      "source_location": "L31",
+      "source_location": "L30",
       "_origin": "ast",
       "id": "shared_datatable_datatableprops",
       "community": 0,
@@ -17046,5 +17046,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "ae74437a800e2fe54555b4ede188942137ebbd29"
+  "built_at_commit": "a61a8ae392e7e98b7ad2c59d778985d1b5ddcebe"
 }

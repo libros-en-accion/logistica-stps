@@ -35,28 +35,28 @@
     "semantic_hash": ""
   },
   "src/app/(app)/catalogos/clientes/page.tsx": {
-    "mtime": 1781987201.8139455,
-    "ast_hash": "6a548ab4b45ae9d93b335ca29394f2df",
+    "mtime": 1781988146.7925315,
+    "ast_hash": "32987e9a259aed899b1aab2dff560f1d",
     "semantic_hash": ""
   },
   "src/app/(app)/catalogos/equipos/page.tsx": {
-    "mtime": 1781987264.7256057,
-    "ast_hash": "6a1323cea4b19b5db003494368b75203",
+    "mtime": 1781988142.1325583,
+    "ast_hash": "68d69ff8b524cb963259f1c0a0ae0465",
     "semantic_hash": ""
   },
   "src/app/(app)/catalogos/normas/page.tsx": {
-    "mtime": 1781987325.8852544,
-    "ast_hash": "cc825a5ace393ae3156463244ba6beb8",
+    "mtime": 1781988151.1845062,
+    "ast_hash": "57bdae898925f217a030ae1137941545",
     "semantic_hash": ""
   },
   "src/app/(app)/catalogos/tecnicos/page.tsx": {
-    "mtime": 1781987178.8020647,
-    "ast_hash": "67a67b161f921ad77dc9f763f714c513",
+    "mtime": 1781988132.632613,
+    "ast_hash": "f6c2fd7a9d7e0800aea9f6bd8a74ec5b",
     "semantic_hash": ""
   },
   "src/app/(app)/catalogos/vehiculos/page.tsx": {
-    "mtime": 1781987186.3460257,
-    "ast_hash": "7ef5aad3916c39289230fb12a61968fa",
+    "mtime": 1781988136.3325918,
+    "ast_hash": "07dea1b9ba9ff30ac21c38144d164c54",
     "semantic_hash": ""
   },
   "src/app/(app)/dashboard/page.tsx": {
@@ -220,7 +220,7 @@
     "semantic_hash": ""
   },
   "src/components/layout/UserMenu.tsx": {
-    "mtime": 1781986769.5641801,
+    "mtime": 1781987499.5122569,
     "ast_hash": "955b05c0d3afa229df8b93f7565e5da8",
     "semantic_hash": ""
   },
@@ -235,8 +235,8 @@
     "semantic_hash": ""
   },
   "src/components/shared/DataTable.tsx": {
-    "mtime": 1781919702.4519405,
-    "ast_hash": "83c3f4e17632d86467719afcfb0ea6c9",
+    "mtime": 1781988128.3446376,
+    "ast_hash": "ce136bd7aac44c44ba54ec0a9c5a764a",
     "semantic_hash": ""
   },
   "src/components/shared/ErrorBoundary.tsx": {
@@ -245,7 +245,7 @@
     "semantic_hash": ""
   },
   "src/components/shared/FormDialog.tsx": {
-    "mtime": 1781987170.9301052,
+    "mtime": 1781987499.5122569,
     "ast_hash": "000aefac682a5a79d34cdba74ebdec29",
     "semantic_hash": ""
   },
@@ -575,12 +575,12 @@
     "semantic_hash": ""
   },
   ".commandcode/taste/taste.md": {
-    "mtime": 1781986769.5641801,
+    "mtime": 1781987499.5122569,
     "ast_hash": "99376309aeb9237f0fb910441a39dc4c",
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1781986769.5641801,
+    "mtime": 1781987499.5122569,
     "ast_hash": "f91924f36ae5331c9d527ec43d11419d",
     "semantic_hash": ""
   },

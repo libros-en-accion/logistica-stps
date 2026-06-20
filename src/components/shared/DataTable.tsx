@@ -27,7 +27,6 @@ export interface Column<T> {
   render?: (item: T) => React.ReactNode
   className?: string
 }
-
 interface DataTableProps<T> {
   columns: Column<T>[]
   data: T[]
@@ -41,6 +40,7 @@ interface DataTableProps<T> {
   emptyMessage?: string
   actions?: React.ReactNode
   onExport?: () => void
+  exportFilename?: string
 }
 
 export function DataTable<T>({
@@ -56,6 +56,7 @@ export function DataTable<T>({
   emptyMessage = 'No se encontraron registros',
   actions,
   onExport,
+  exportFilename,
 }: DataTableProps<T>) {
   const [sortKey, setSortKey] = useState<string | null>(null)
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('asc')
@@ -89,9 +90,65 @@ export function DataTable<T>({
     return sortDir === 'asc' ? cmp : -cmp
   })
 
+  function handleCsvExport() {
+    if (data.length === 0) return
+
+    // Extract headers
+    const headers = columns.map((col) => col.label)
+
+    // Extract rows
+    const rows = data.map((item) => {
+      return columns.map((col) => {
+        let val: any = (item as any)[col.key]
+
+        // Custom extractors for cleaner output
+        if (col.key === 'nombre' && (item as any).nombre) {
+          val = `${(item as any).nombre} ${(item as any).apellidos ?? ''}`.trim()
+        } else if (col.key === 'activo' || col.key === 'activa') {
+          val = val ? 'Activo' : 'Inactivo'
+        } else if (col.key === 'km_actual' && val != null) {
+          val = `${val} km`
+        } else if ((col.key === 'vigencia_calibracion' || col.key === 'fecha_calibracion' || col.key === 'prox_mantto' || col.key === 'created_at') && val != null) {
+          val = new Date(val).toLocaleDateString('es-MX')
+        }
+
+        const strVal = val != null ? String(val) : ''
+        const escaped = strVal.replace(/"/g, '""')
+        return `"${escaped}"`
+      })
+    })
+
+    // Construct CSV
+    const csvContent = [
+      headers.map((h) => `"${h.replace(/"/g, '""')}"`).join(','),
+      ...rows.map((row) => row.join(','))
+    ].join('\n')
+
+    // Trigger download (UTF-8 BOM to support special characters like accents in Excel)
+    const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), csvContent], { type: 'text/csv;charset=utf-8;' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.setAttribute('href', url)
+    link.setAttribute('download', `${exportFilename || 'export'}_${new Date().toISOString().slice(0, 10)}.csv`)
+    link.style.visibility = 'hidden'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
+  const handleExport = () => {
+    if (exportFilename) {
+      handleCsvExport()
+    } else if (onExport) {
+      onExport()
+    }
+  }
+
+  const showExport = !!onExport || !!exportFilename
+
   return (
     <div className="space-y-4">
-      {(searchable || actions || onExport) && (
+      {(searchable || actions || showExport) && (
         <div className="flex items-center justify-between gap-4">
           {searchable && (
             <div className="relative flex-1 max-w-sm">
@@ -105,8 +162,8 @@ export function DataTable<T>({
           )}
           <div className="flex items-center gap-2 ml-auto">
             {actions}
-            {onExport && (
-              <Button variant="outline" size="sm" onClick={onExport}>
+            {showExport && (
+              <Button variant="outline" size="sm" onClick={handleExport}>
                 <FileDown className="mr-1 h-3 w-3" /> Exportar
               </Button>
             )}

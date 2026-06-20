@@ -90,7 +90,7 @@ export default function ClientesPage() {
             <Plus className="mr-1 h-4 w-4" /> Agregar
           </Button>
         }
-        onExport={() => {}}
+        exportFilename="clientes"
       />
 
       <FormDialog

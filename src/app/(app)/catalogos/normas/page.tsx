@@ -88,6 +88,7 @@ export default function NormasPage() {
             <Plus className="mr-1 h-4 w-4" /> Agregar
           </Button>
         }
+        exportFilename="normas"
       />
 
       <FormDialog

@@ -98,7 +98,7 @@ export default function VehiculosPage() {
             <Plus className="mr-1 h-4 w-4" /> Agregar
           </Button>
         }
-        onExport={() => {}}
+        exportFilename="vehiculos"
       />
 
       <FormDialog
