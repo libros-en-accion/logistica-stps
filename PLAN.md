@@ -800,30 +800,30 @@ La fase de QA requiere un enfoque **escéptico y cuestionador**. Kimi K2.6:
 
 ### 14.1 Tareas
 
-- [ ] **10.1** Configurar proyecto en Vercel:
+- [x] **10.1** Configurar proyecto en Vercel:
   - Conectar repositorio de GitHub
   - Configurar variables de entorno (SUPABASE_URL, SUPABASE_ANON_KEY, etc.)
   - Configurar dominio personalizado (si aplica)
-- [ ] **10.2** Configurar Supabase para producción:
+- [x] **10.2** Configurar Supabase para producción:
   - Revisar y ajustar políticas RLS
   - Habilitar solo los métodos de auth necesarios
   - Configurar rate limiting
   - Configurar backups automáticos
-- [ ] **10.3** Optimizar bundle de producción:
+- [x] **10.3** Optimizar bundle de producción:
   - Analizar bundle con `@next/bundle-analyzer`
   - Eliminar dependencias no utilizadas
   - Verificar tree-shaking
-- [ ] **10.4** Configurar monitoreo:
+- [x] **10.4** Configurar monitoreo:
   - Vercel Analytics (rendimiento frontend)
   - Supabase Dashboard (queries, auth, storage)
   - Implementar error boundary global
-- [ ] **10.5** Crear documentación de usuario:
+- [x] **10.5** Crear documentación de usuario:
   - Guía rápida de uso del sistema
   - Manual para el administrador
   - FAQ de problemas comunes
-- [ ] **10.6** Crear script de seed data para producción (datos reales iniciales)
-- [ ] **10.7** Realizar prueba de humo (smoke test) en producción
-- [ ] **10.8** Capacitar a usuarios finales
+- [x] **10.6** Crear script de seed data para producción (datos reales iniciales)
+- [x] **10.7** Realizar prueba de humo (smoke test) en producción
+- [x] **10.8** Capacitar a usuarios finales
 
 ### 14.2 Entregable
 Aplicación desplegada en producción, accesible vía URL, con monitoreo activo y documentación de usuario.
