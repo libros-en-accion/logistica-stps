@@ -453,7 +453,7 @@ El motor de validación es el **corazón del sistema**. Antes de confirmar cualq
 
 ### 8.2 Tareas
 
-- [ ] **4.1** Diseñar interfaz TypeScript del motor de validación:
+- [x] **4.1** Diseñar interfaz TypeScript del motor de validación:
   ```typescript
   interface ValidacionResult {
     valido: boolean;
@@ -471,35 +471,35 @@ El motor de validación es el **corazón del sistema**. Antes de confirmar cualq
     detalle: string;
   }
   ```
-- [ ] **4.2** Implementar función `validarDisponibilidadTecnico()`:
+- [x] **4.2** Implementar función `validarDisponibilidadTecnico()`:
   - Verificar contra `asignaciones_tecnicos` (¿tiene otra OS en esa fecha/hora?)
   - Verificar contra `bloqueos_recursos` (¿tiene vacaciones, incapacidad, etc.?)
   - Verificar certificaciones (¿está habilitado para la norma de la OS?)
-- [ ] **4.3** Implementar función `validarDisponibilidadVehiculo()`:
+- [x] **4.3** Implementar función `validarDisponibilidadVehiculo()`:
   - Verificar contra `asignaciones_vehiculos`
   - Verificar contra `bloqueos_recursos` (mantenimiento, etc.)
   - Verificar estado general del vehículo
-- [ ] **4.4** Implementar función `validarDisponibilidadEquipo()`:
+- [x] **4.4** Implementar función `validarDisponibilidadEquipo()`:
   - Verificar contra `asignaciones_equipos`
   - Verificar contra `bloqueos_recursos` (calibración, préstamo, etc.)
   - Verificar vigencia de calibración a la fecha del servicio
   - Verificar que el equipo es requerido por la norma evaluada
-- [ ] **4.5** Implementar función orquestadora `validarOrdenServicio()`:
+- [x] **4.5** Implementar función orquestadora `validarOrdenServicio()`:
   - Ejecuta todas las validaciones en paralelo
   - Consolida resultados
   - Retorna objeto `ValidacionResult`
-- [ ] **4.6** Crear funciones PostgreSQL equivalentes (validación server-side como respaldo):
+- [x] **4.6** Crear funciones PostgreSQL equivalentes (validación server-side como respaldo):
   - Trigger `BEFORE INSERT/UPDATE` en tablas de asignación
   - Función que lanza excepción si hay conflicto (doble capa de seguridad)
-- [ ] **4.7** Implementar detección de **conflictos parciales** (advertencias):
+- [x] **4.7** Implementar detección de **conflictos parciales** (advertencias):
   - Equipo con calibración próxima a vencer (<30 días) → advertencia amarilla
   - Técnico con muchos servicios en la semana (>4) → advertencia de sobrecarga
   - Vehículo con km alto → sugerir mantenimiento
-- [ ] **4.8** Crear componente `<ConflictAlert>` para mostrar errores en la UI:
+- [x] **4.8** Crear componente `<ConflictAlert>` para mostrar errores en la UI:
   - Lista de conflictos con ícono, recurso afectado y detalle
   - Distinción visual entre errores bloqueantes (rojo) y advertencias (amarillo)
   - Enlace directo al recurso o servicio en conflicto
-- [ ] **4.9** Escribir tests unitarios exhaustivos del motor de validación:
+- [x] **4.9** Escribir tests unitarios exhaustivos del motor de validación:
   - Caso: técnico libre → ✅
   - Caso: técnico con OS solapada parcialmente → ❌
   - Caso: técnico con OS el mismo día pero diferente horario → ✅
