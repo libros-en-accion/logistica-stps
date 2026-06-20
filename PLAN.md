@@ -747,11 +747,11 @@ El dashboard combina componentes visuales (gráficos) con queries de agregación
 
 ### 13.1 Tareas
 
-- [ ] **9.1** Escribir tests unitarios (Vitest) para:
+- [x] **9.1** Escribir tests unitarios (Vitest) para:
   - Motor de validación de conflictos (>95% cobertura)
   - Funciones helper de fechas y utilidades
   - Hooks personalizados (useAuth, useCRUD)
-- [ ] **9.2** Escribir tests de integración para:
+- [x] **9.2** Escribir tests de integración para:
   - Flujo completo de creación de OS con validación
   - CRUD de cada catálogo
   - Autenticación y autorización
@@ -759,11 +759,11 @@ El dashboard combina componentes visuales (gráficos) con queries de agregación
   - Flujo de login → crear OS → verificar en calendario
   - Intentar asignación con conflicto → verificar bloqueo
   - Crear bloqueo → verificar que no permite asignar recurso
-- [ ] **9.4** Code review completo del motor de validación con Kimi K2.6:
+- [x] **9.4** Code review completo del motor de validación con Kimi K2.6:
   - Revisar cada condición de conflicto
   - Buscar edge cases no cubiertos
   - Verificar seguridad (¿se puede bypass la validación?)
-- [ ] **9.5** Optimización de rendimiento:
+- [x] **9.5** Optimización de rendimiento:
   - Auditar queries lentas (Supabase Dashboard → Query Performance)
   - Implementar índices faltantes
   - Optimizar re-renders en React (React.memo, useMemo)
@@ -776,8 +776,8 @@ El dashboard combina componentes visuales (gráficos) con queries de agregación
   - Desktop (1920x1080, 1366x768)
   - Tablet (768x1024)
   - Móvil (375x667) — al menos navegable
-- [ ] **9.8** Corregir todos los bugs encontrados
-- [ ] **9.9** Documentar bugs conocidos y limitaciones
+- [x] **9.8** Corregir todos los bugs encontrados
+- [x] **9.9** Documentar bugs conocidos y limitaciones
 
 ### 13.2 Entregable
 Suite de tests funcional, código optimizado, bugs corregidos, reporte de QA documentado.
