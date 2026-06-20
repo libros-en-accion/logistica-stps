@@ -339,65 +339,65 @@ La integración de Supabase Auth con Next.js App Router sigue patrones bien esta
 
 ### 7.1 Tareas — Catálogo de Técnicos
 
-- [ ] **3.1** Crear página `/catalogos/tecnicos` con tabla de datos:
+- [x] **3.1** Crear página `/catalogos/tecnicos` con tabla de datos:
   - Columnas: Nombre, RFC, Teléfono, Normas certificadas, Estado, Acciones
   - Búsqueda y filtrado por nombre/estado/norma
   - Paginación server-side
-- [ ] **3.2** Crear diálogo modal para Crear/Editar técnico:
+- [x] **3.2** Crear diálogo modal para Crear/Editar técnico:
   - Campos: nombre, apellidos, RFC, teléfono, email, dirección
   - Selector múltiple de normas STPS que puede evaluar
   - Validación con Zod
-- [ ] **3.3** Implementar soft-delete y cambio de estado
-- [ ] **3.4** Crear vista de detalle del técnico con historial de servicios
+- [x] **3.3** Implementar soft-delete y cambio de estado
+- [x] **3.4** Crear vista de detalle del técnico con historial de servicios
 
 ### 7.2 Tareas — Catálogo de Vehículos
 
-- [ ] **3.5** Crear página `/catalogos/vehiculos` con tabla de datos:
+- [x] **3.5** Crear página `/catalogos/vehiculos` con tabla de datos:
   - Columnas: Unidad, Marca, Modelo, Año, Placas, Estado, Km, Próximo mantenimiento
-- [ ] **3.6** Crear diálogo modal para Crear/Editar vehículo:
+- [x] **3.6** Crear diálogo modal para Crear/Editar vehículo:
   - Campos: número de unidad, marca, modelo, año, placas, color, VIN, km actual
   - Fecha de próximo mantenimiento (con alerta visual si está próximo)
   - Validación con Zod
-- [ ] **3.7** Implementar registro de mantenimientos (sub-tabla)
-- [ ] **3.8** Badge visual de estado del vehículo (disponible/mantenimiento/asignado)
+- [x] **3.7** Implementar registro de mantenimientos (sub-tabla)
+- [x] **3.8** Badge visual de estado del vehículo (disponible/mantenimiento/asignado)
 
 ### 7.3 Tareas — Catálogo de Equipos de Medición
 
-- [ ] **3.9** Crear página `/catalogos/equipos` con tabla de datos:
+- [x] **3.9** Crear página `/catalogos/equipos` con tabla de datos:
   - Columnas: ID interno, Descripción, Marca, Modelo, N° Serie, Vigencia Calibración, Estado
-- [ ] **3.10** Crear diálogo modal para Crear/Editar equipo:
+- [x] **3.10** Crear diálogo modal para Crear/Editar equipo:
   - Campos: ID interno, descripción, marca, modelo, número de serie
   - Fecha de última calibración y vigencia
   - Laboratorio de calibración
   - Certificado de calibración (upload a Supabase Storage)
   - Validación con Zod
-- [ ] **3.11** Alerta visual automática cuando la calibración esté por vencer (≤30 días)
-- [ ] **3.12** Alerta de bloqueo cuando la calibración esté vencida (no permite asignar)
+- [x] **3.11** Alerta visual automática cuando la calibración esté por vencer (≤30 días)
+- [x] **3.12** Alerta de bloqueo cuando la calibración esté vencida (no permite asignar)
 
 ### 7.4 Tareas — Catálogo de Normas STPS
 
-- [ ] **3.13** Crear página `/catalogos/normas` con tabla de datos:
+- [x] **3.13** Crear página `/catalogos/normas` con tabla de datos:
   - Columnas: Clave de norma, Nombre, Descripción, Equipos requeridos, Activa
-- [ ] **3.14** CRUD para normas con relación a equipos necesarios
+- [x] **3.14** CRUD para normas con relación a equipos necesarios
 
 ### 7.5 Tareas — Catálogo de Clientes
 
-- [ ] **3.15** Crear página `/catalogos/clientes` con tabla de datos:
+- [x] **3.15** Crear página `/catalogos/clientes` con tabla de datos:
   - Columnas: Razón social, RFC, Contacto, Teléfono, Dirección, Servicios realizados
-- [ ] **3.16** CRUD de clientes con validación de RFC
-- [ ] **3.17** Vista de detalle con historial de órdenes de servicio
+- [x] **3.16** CRUD de clientes con validación de RFC
+- [x] **3.17** Vista de detalle con historial de órdenes de servicio
 
 ### 7.6 Tareas — Componentes Compartidos
 
-- [ ] **3.18** Crear componente reutilizable `<DataTable>` con:
+- [x] **3.18** Crear componente reutilizable `<DataTable>` con:
   - Ordenamiento por columnas
   - Filtrado global y por columna
   - Paginación configurable
   - Exportación a CSV/Excel
   - Selección de filas (checkbox)
-- [ ] **3.19** Crear componente reutilizable `<FormDialog>` para modales CRUD
-- [ ] **3.20** Crear componente `<StatusBadge>` con colores por estado
-- [ ] **3.21** Crear hook reutilizable `useCRUD(tableName)` para operaciones estándar
+- [x] **3.19** Crear componente reutilizable `<FormDialog>` para modales CRUD
+- [x] **3.20** Crear componente `<StatusBadge>` con colores por estado
+- [x] **3.21** Crear hook reutilizable `useCRUD(tableName)` para operaciones estándar
 
 ### 7.7 Entregable
 Cinco catálogos completamente funcionales con CRUD, búsqueda, filtrado, paginación y validación. Componentes reutilizables para todo el proyecto.
