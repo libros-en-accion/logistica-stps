@@ -296,8 +296,8 @@ El diseño del schema de base de datos es la **decisión arquitectónica más cr
 
 ### 6.1 Tareas
 
-- [ ] **2.1** Configurar Supabase Auth con email/password
-- [ ] **2.2** Crear tabla `perfiles_usuario` vinculada a `auth.users`:
+- [x] **2.1** Configurar Supabase Auth con email/password
+- [x] **2.2** Crear tabla `perfiles_usuario` vinculada a `auth.users`:
   ```sql
   CREATE TABLE perfiles_usuario (
     id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
@@ -307,18 +307,18 @@ El diseño del schema de base de datos es la **decisión arquitectónica más cr
     created_at TIMESTAMPTZ DEFAULT now()
   );
   ```
-- [ ] **2.3** Implementar middleware de Next.js para protección de rutas
-- [ ] **2.4** Crear páginas de autenticación:
+- [x] **2.3** Implementar middleware de Next.js para protección de rutas
+- [x] **2.4** Crear páginas de autenticación:
   - `/login` — Inicio de sesión
   - `/registro` — Registro de nuevos usuarios (solo admin)
   - `/recuperar-contrasena` — Recuperación de contraseña
-- [ ] **2.5** Crear hook personalizado `useAuth()` con Zustand:
+- [x] **2.5** Crear hook personalizado `useAuth()` con Zustand:
   - Estado del usuario actual
   - Verificación de permisos por rol
   - Funciones de login/logout/refresh
-- [ ] **2.6** Crear componente `<ProtectedRoute>` y `<RoleGate>`
-- [ ] **2.7** Implementar helper de Supabase SSR para Server Components
-- [ ] **2.8** Crear componente de perfil de usuario en el sidebar
+- [x] **2.6** Crear componente `<ProtectedRoute>` y `<RoleGate>`
+- [x] **2.7** Implementar helper de Supabase SSR para Server Components
+- [x] **2.8** Crear componente de perfil de usuario en el sidebar
 
 ### 6.2 Entregable
 Sistema de autenticación funcional con login, protección de rutas por rol, y estado de sesión persistente.

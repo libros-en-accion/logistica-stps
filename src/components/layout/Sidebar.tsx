@@ -13,15 +13,20 @@ import {
   Building2,
   Ban,
   BarChart3,
+  LogOut,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { APP_NAME } from '@/lib/constants'
+import { APP_NAME, ROLES } from '@/lib/constants'
+import { useAuth } from '@/hooks/useAuth'
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { Badge } from '@/components/ui/badge'
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   {
     label: 'Catálogos',
     icon: FileText,
+    roles: [ROLES.ADMIN, ROLES.COORDINADOR],
     children: [
       { href: '/catalogos/tecnicos', label: 'Técnicos', icon: Users },
       { href: '/catalogos/vehiculos', label: 'Vehículos', icon: Truck },
@@ -36,11 +41,29 @@ const navItems = [
   { href: '/reportes', label: 'Reportes', icon: BarChart3 },
 ]
 
+const roleLabels: Record<string, string> = {
+  admin: 'Admin',
+  coordinador: 'Coordinador',
+  supervisor: 'Supervisor',
+  tecnico: 'Técnico',
+}
+
 export function Sidebar() {
   const pathname = usePathname()
+  const { user, logout } = useAuth()
 
   function isActive(href: string) {
     return pathname.startsWith(href)
+  }
+
+  function getInitials() {
+    if (!user) return '?'
+    return user.nombre_completo
+      .split(' ')
+      .map((n) => n[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2)
   }
 
   return (
@@ -51,7 +74,6 @@ export function Sidebar() {
       <nav className="flex-1 overflow-y-auto p-3 space-y-1">
         {navItems.map((item) => {
           if ('children' in item && item.children) {
-            const open = item.children.some((c) => isActive(c.href))
             return (
               <div key={item.label}>
                 <div className="flex items-center gap-2 px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
@@ -96,6 +118,30 @@ export function Sidebar() {
           )
         })}
       </nav>
+      <div className="border-t p-3">
+        <div className="flex items-center gap-3 rounded-lg px-3 py-2">
+          <Avatar className="h-8 w-8">
+            <AvatarFallback className="text-xs font-medium">
+              {getInitials()}
+            </AvatarFallback>
+          </Avatar>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium truncate">
+              {user?.nombre_completo ?? 'Usuario'}
+            </p>
+            <Badge variant="outline" className="text-[10px] px-1 py-0 h-4">
+              {roleLabels[user?.rol ?? ''] ?? 'Sin rol'}
+            </Badge>
+          </div>
+          <button
+            onClick={logout}
+            className="text-muted-foreground/60 hover:text-foreground transition-colors"
+            aria-label="Cerrar sesión"
+          >
+            <LogOut className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
     </aside>
   )
 }

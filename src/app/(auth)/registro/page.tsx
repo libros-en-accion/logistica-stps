@@ -15,44 +15,62 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { toast } from 'sonner'
-import { APP_NAME } from '@/lib/constants'
+import { APP_NAME, ROLES } from '@/lib/constants'
+import type { PerfilUsuario } from '@/types/database.types'
 
-export default function LoginPage() {
+export default function RegistroPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [nombreCompleto, setNombreCompleto] = useState('')
+  const [rol, setRol] = useState<PerfilUsuario['rol']>('tecnico')
   const [loading, setLoading] = useState(false)
-  const { login } = useAuth()
+  const { register } = useAuth()
   const router = useRouter()
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
 
-    const { error } = await login(email, password)
+    const { error } = await register(email, password, nombreCompleto, rol)
 
     if (error) {
-      toast.error('Error al iniciar sesión', {
+      toast.error('Error al registrar', {
         description: error.message,
       })
       setLoading(false)
       return
     }
 
-    toast.success('Sesión iniciada correctamente')
-    router.push('/dashboard')
+    toast.success('Usuario registrado correctamente')
+    router.push('/login')
   }
 
   return (
     <Card className="w-full max-w-md">
       <CardHeader className="text-center">
         <CardTitle className="text-2xl">{APP_NAME}</CardTitle>
-        <CardDescription>
-          Inicia sesión para acceder al sistema
-        </CardDescription>
+        <CardDescription>Crear una nueva cuenta</CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>
         <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="nombre">Nombre completo</Label>
+            <Input
+              id="nombre"
+              placeholder="Juan Pérez García"
+              value={nombreCompleto}
+              onChange={(e) => setNombreCompleto(e.target.value)}
+              required
+            />
+          </div>
           <div className="space-y-2">
             <Label htmlFor="email">Correo electrónico</Label>
             <Input
@@ -62,7 +80,6 @@ export default function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              autoComplete="email"
             />
           </div>
           <div className="space-y-2">
@@ -70,30 +87,38 @@ export default function LoginPage() {
             <Input
               id="password"
               type="password"
-              placeholder="••••••••"
+              placeholder="•••••••• (mín. 6 caracteres)"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              autoComplete="current-password"
+              minLength={6}
             />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="rol">Rol</Label>
+            <Select value={rol} onValueChange={(v) => setRol(v as PerfilUsuario['rol'])}>
+              <SelectTrigger>
+                <SelectValue placeholder="Seleccionar rol" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value={ROLES.ADMIN}>Administrador</SelectItem>
+                <SelectItem value={ROLES.COORDINADOR}>Coordinador Logístico</SelectItem>
+                <SelectItem value={ROLES.SUPERVISOR}>Supervisor</SelectItem>
+                <SelectItem value={ROLES.TECNICO}>Técnico</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         </CardContent>
         <CardFooter className="flex flex-col gap-3">
           <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
+            {loading ? 'Registrando...' : 'Crear Cuenta'}
           </Button>
           <p className="text-sm text-muted-foreground">
-            ¿No tienes cuenta?{' '}
-            <Link href="/registro" className="underline underline-offset-4 hover:text-primary">
-              Registrarse
+            ¿Ya tienes cuenta?{' '}
+            <Link href="/login" className="underline underline-offset-4 hover:text-primary">
+              Inicia sesión
             </Link>
           </p>
-          <Link
-            href="/recuperar-contrasena"
-            className="text-xs text-muted-foreground underline underline-offset-4 hover:text-primary"
-          >
-            ¿Olvidaste tu contraseña?
-          </Link>
         </CardFooter>
       </form>
     </Card>
