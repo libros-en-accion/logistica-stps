@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Plus, Pencil, Trash2 } from 'lucide-react'
 import { useCRUD } from '@/hooks/useCRUD'
 import { DataTable, type Column } from '@/components/shared/DataTable'
@@ -10,6 +10,8 @@ import { TecnicoForm } from '@/components/catalogos/TecnicoForm'
 import { Button } from '@/components/ui/button'
 import type { Tecnico } from '@/types/database.types'
 import { nullToUndefined } from '@/lib/utils/formato'
+import { createClient } from '@/lib/supabase/client'
+import { toast } from 'sonner'
 
 const columns: Column<Tecnico>[] = [
   { key: 'nombre', label: 'Nombre', sortable: true,
@@ -22,8 +24,37 @@ const columns: Column<Tecnico>[] = [
 
 export default function TecnicosPage() {
   const crud = useCRUD<Tecnico>({ table: 'tecnicos', orderBy: 'apellidos', orderDirection: 'asc' })
+  const supabase = createClient()
+  const [normas, setNormas] = useState<any[]>([])
+  const [selectedNormasIds, setSelectedNormasIds] = useState<string[]>([])
+  const [saving, setSaving] = useState(false)
 
-  useEffect(() => { crud.fetchAll() }, [])
+  // Cargar normas activas al montar la página
+  useEffect(() => {
+    supabase
+      .from('normas_stps')
+      .select('id, clave, nombre')
+      .eq('activa', true)
+      .order('clave')
+      .then(({ data }) => {
+        setNormas(data ?? [])
+      })
+  }, [supabase])
+
+  // Cargar certificaciones del técnico seleccionado al editar
+  useEffect(() => {
+    if (crud.selected) {
+      supabase
+        .from('tecnico_normas')
+        .select('norma_id')
+        .eq('tecnico_id', crud.selected.id)
+        .then(({ data }) => {
+          setSelectedNormasIds((data ?? []).map((row) => row.norma_id))
+        })
+    } else {
+      setSelectedNormasIds([])
+    }
+  }, [crud.selected, supabase])
 
   async function handleSubmit(data: Record<string, unknown>) {
     const isEdit = !!crud.selected
@@ -32,12 +63,58 @@ export default function TecnicosPage() {
       : '¿Está seguro de que desea registrar este nuevo técnico?'
 
     if (confirm(mensaje)) {
-      if (isEdit) {
-        await crud.update(crud.selected!.id, data)
-      } else {
-        await crud.create(data)
+      setSaving(true)
+      const { normas_ids, ...tecnicoData } = data as any
+
+      try {
+        let tecnicoId = crud.selected?.id
+
+        if (isEdit) {
+          // 1. Actualizar tabla tecnicos
+          const { error: updateError } = await supabase
+            .from('tecnicos')
+            .update(tecnicoData)
+            .eq('id', tecnicoId)
+          if (updateError) throw new Error(`Error al actualizar técnico: ${updateError.message}`)
+
+          // 2. Eliminar certificaciones previas
+          const { error: deleteError } = await supabase
+            .from('tecnico_normas')
+            .delete()
+            .eq('tecnico_id', tecnicoId)
+          if (deleteError) throw new Error(`Error al remover certificaciones previas: ${deleteError.message}`)
+        } else {
+          // 1. Insertar nuevo técnico
+          const { data: newTecnico, error: insertError } = await supabase
+            .from('tecnicos')
+            .insert(tecnicoData)
+            .select('id')
+            .single()
+          if (insertError) throw new Error(`Error al registrar técnico: ${insertError.message}`)
+          tecnicoId = newTecnico.id
+        }
+
+        // 3. Insertar nuevas certificaciones
+        if (normas_ids && normas_ids.length > 0) {
+          const relationInserts = normas_ids.map((normaId: string) => ({
+            tecnico_id: tecnicoId,
+            norma_id: normaId,
+          }))
+
+          const { error: relationError } = await supabase
+            .from('tecnico_normas')
+            .insert(relationInserts)
+          if (relationError) throw new Error(`Error al guardar certificaciones: ${relationError.message}`)
+        }
+
+        toast.success(isEdit ? 'Técnico actualizado correctamente' : 'Técnico creado correctamente')
+        await crud.fetchAll()
+        crud.closeDialog()
+      } catch (err: any) {
+        toast.error(err.message || 'Error inesperado')
+      } finally {
+        setSaving(false)
       }
-      crud.closeDialog()
     }
   }
 
@@ -93,15 +170,18 @@ export default function TecnicosPage() {
         title={crud.selected ? 'Editar Técnico' : 'Nuevo Técnico'}
         description={crud.selected ? 'Modifica los datos del técnico' : 'Registra un nuevo técnico evaluador'}
         formId="tecnico-form"
-        loading={crud.loading}
+        loading={crud.loading || saving}
       >
         <TecnicoForm
-          defaultValues={nullToUndefined(crud.selected) as any}
+          defaultValues={{
+            ...nullToUndefined(crud.selected),
+            normas_ids: selectedNormasIds,
+          } as any}
           onSubmit={handleSubmit}
-          loading={crud.loading}
+          loading={crud.loading || saving}
+          normas={normas}
         />
       </FormDialog>
     </div>
   )
 }
-

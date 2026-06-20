@@ -9,6 +9,8 @@ export const tecnicoSchema = z.object({
   telefono: z.string().optional().default(''),
   email: z.string().email('Email inválido').optional().or(z.literal('')).default(''),
   direccion: z.string().optional().default(''),
+  normas_ids: z.array(z.string()).optional().default([]),
 })
 
 export type TecnicoFormValues = z.input<typeof tecnicoSchema>
+

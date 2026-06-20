@@ -1027,7 +1027,7 @@
       "label": "columns",
       "file_type": "code",
       "source_file": "src/app/(app)/catalogos/tecnicos/page.tsx",
-      "source_location": "L14",
+      "source_location": "L16",
       "_origin": "ast",
       "id": "tecnicos_page_columns",
       "community": 0,
@@ -1037,7 +1037,7 @@
       "label": "TecnicosPage()",
       "file_type": "code",
       "source_file": "src/app/(app)/catalogos/tecnicos/page.tsx",
-      "source_location": "L23",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "tecnicos_page_tecnicospage",
       "community": 0,
@@ -1677,7 +1677,7 @@
       "label": "TecnicoForm()",
       "file_type": "code",
       "source_file": "src/components/catalogos/TecnicoForm.tsx",
-      "source_location": "L16",
+      "source_location": "L17",
       "_origin": "ast",
       "id": "catalogos_tecnicoform_tecnicoform",
       "community": 4,
@@ -3897,7 +3897,7 @@
       "label": "TecnicoFormValues",
       "file_type": "code",
       "source_file": "src/lib/schemas/tecnico.schema.ts",
-      "source_location": "L14",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "schemas_tecnico_schema_tecnicoformvalues",
       "community": 4,
@@ -7428,6 +7428,28 @@
       "confidence_score": 1.0,
       "source": "src_app_app_catalogos_tecnicos_page_tsx_tecnicos_page",
       "target": "shared_statusbadge_statusbadge"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/catalogos/tecnicos/page.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "src_app_app_catalogos_tecnicos_page_tsx_tecnicos_page",
+      "target": "supabase_client",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/catalogos/tecnicos/page.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "src_app_app_catalogos_tecnicos_page_tsx_tecnicos_page",
+      "target": "supabase_client_createclient",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -17046,5 +17068,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "a61a8ae392e7e98b7ad2c59d778985d1b5ddcebe"
+  "built_at_commit": "f283e6be31cd3b05c985430485fa0bd747036bcd"
 }

@@ -1,16 +1,16 @@
 # Graph Report - 006_LOGISTICA  (2026-06-20)
 
 ## Corpus Check
-- 115 files · ~26,661 words
+- 115 files · ~27,035 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 545 nodes · 1092 edges · 43 communities (32 shown, 11 thin omitted)
+- 545 nodes · 1094 edges · 43 communities (32 shown, 11 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a61a8ae3`
+- Built from commit: `f283e6be`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -56,7 +56,7 @@
 
 ## God Nodes (most connected - your core abstractions)
 1. `cn()` - 117 edges
-2. `createClient()` - 36 edges
+2. `createClient()` - 37 edges
 3. `Button()` - 24 edges
 4. `compilerOptions` - 16 edges
 5. `Input()` - 14 edges
@@ -202,9 +202,9 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `cn()` connect `Community 10` to `Community 0`, `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 38`, `Community 8`, `Community 40`, `Community 13`, `Community 15`, `Community 16`?**
   _High betweenness centrality (0.178) - this node is a cross-community bridge._
 - **Why does `createClient()` connect `Community 1` to `Community 0`, `Community 3`, `Community 14`?**
-  _High betweenness centrality (0.047) - this node is a cross-community bridge._
+  _High betweenness centrality (0.048) - this node is a cross-community bridge._
 - **Why does `Button()` connect `Community 0` to `Community 1`, `Community 3`, `Community 8`, `Community 10`, `Community 15`, `Community 16`, `Community 19`, `Community 20`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
 - **What connects `$schema`, `style`, `rsc` to the rest of the system?**
   _206 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
