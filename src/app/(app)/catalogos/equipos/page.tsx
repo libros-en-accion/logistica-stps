@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { Plus, AlertTriangle, XCircle } from 'lucide-react'
+import { Plus, AlertTriangle, XCircle, Pencil, Trash2 } from 'lucide-react'
 import { useCRUD } from '@/hooks/useCRUD'
 import { DataTable, type Column } from '@/components/shared/DataTable'
 import { FormDialog } from '@/components/shared/FormDialog'
@@ -58,6 +58,29 @@ export default function EquiposPage() {
     crud.closeDialog()
   }
 
+  const columnsWithActions: Column<EquipoMedicion>[] = [
+    ...columns,
+    {
+      key: 'acciones',
+      label: 'Acciones',
+      className: 'text-right w-[120px]',
+      render: (item) => (
+        <div className="flex justify-end gap-2">
+          <Button variant="ghost" size="icon" onClick={() => crud.openEdit(item)} title="Editar">
+            <Pencil className="h-4 w-4" />
+          </Button>
+          <Button variant="ghost" size="icon" className="text-destructive hover:text-destructive hover:bg-destructive/10" onClick={() => {
+            if (confirm(`¿Está seguro de eliminar el equipo ${item.id_interno} (${item.descripcion})?`)) {
+              crud.remove(item.id)
+            }
+          }} title="Eliminar">
+            <Trash2 className="h-4 w-4" />
+          </Button>
+        </div>
+      )
+    }
+  ]
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -68,7 +91,7 @@ export default function EquiposPage() {
       </div>
 
       <DataTable
-        columns={columns}
+        columns={columnsWithActions}
         data={crud.data}
         loading={crud.loading}
         searchable
@@ -95,3 +118,4 @@ export default function EquiposPage() {
     </div>
   )
 }
+

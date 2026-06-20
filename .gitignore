@@ -40,3 +40,20 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Graphify local config and cache
+graphify-out/cache/
+graphify-out/.graphify_*
+
+# Supabase local backups/dumps
+supabase/*.sql
+!supabase/seed.sql
+
+# Local agent tooling configs
+.opencode/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+

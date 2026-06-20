@@ -34,6 +34,29 @@ export default function TecnicosPage() {
     crud.closeDialog()
   }
 
+  const columnsWithActions: Column<Tecnico>[] = [
+    ...columns,
+    {
+      key: 'acciones',
+      label: 'Acciones',
+      className: 'text-right w-[120px]',
+      render: (item) => (
+        <div className="flex justify-end gap-2">
+          <Button variant="ghost" size="icon" onClick={() => crud.openEdit(item)} title="Editar">
+            <Pencil className="h-4 w-4" />
+          </Button>
+          <Button variant="ghost" size="icon" className="text-destructive hover:text-destructive hover:bg-destructive/10" onClick={() => {
+            if (confirm(`¿Está seguro de eliminar al técnico ${item.nombre} ${item.apellidos}?`)) {
+              crud.remove(item.id)
+            }
+          }} title="Eliminar">
+            <Trash2 className="h-4 w-4" />
+          </Button>
+        </div>
+      )
+    }
+  ]
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -44,7 +67,7 @@ export default function TecnicosPage() {
       </div>
 
       <DataTable
-        columns={columns}
+        columns={columnsWithActions}
         data={crud.data}
         loading={crud.loading}
         searchable
@@ -71,3 +94,4 @@ export default function TecnicosPage() {
     </div>
   )
 }
+
