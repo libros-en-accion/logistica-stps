@@ -1,7 +1,21 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  // Output file tracing for standalone deployment
+  output: 'standalone',
 
-export default nextConfig;
+  // Enable React strict mode for development
+  reactStrictMode: true,
+
+  // Configure image domains if needed
+  images: {
+    domains: [],
+  },
+
+  // Environment variables that should be public
+  env: {
+    NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000',
+  },
+}
+
+export default nextConfig
