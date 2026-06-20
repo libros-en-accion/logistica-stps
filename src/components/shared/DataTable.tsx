@@ -43,7 +43,7 @@ interface DataTableProps<T> {
   onExport?: () => void
 }
 
-export function DataTable<T extends Record<string, unknown>>({
+export function DataTable<T>({
   columns,
   data,
   page = 1,
@@ -81,8 +81,8 @@ export function DataTable<T extends Record<string, unknown>>({
 
   const sorted = [...data].sort((a, b) => {
     if (!sortKey) return 0
-    const aVal = a[sortKey]
-    const bVal = b[sortKey]
+    const aVal = (a as any)[sortKey]
+    const bVal = (b as any)[sortKey]
     if (aVal == null) return 1
     if (bVal == null) return -1
     const cmp = String(aVal).localeCompare(String(bVal), 'es', { numeric: true })
@@ -149,12 +149,12 @@ export function DataTable<T extends Record<string, unknown>>({
               </TableRow>
             ) : (
               sorted.map((item, i) => (
-                <TableRow key={(item.id as string) ?? i}>
+                <TableRow key={((item as any).id as string) ?? i}>
                   {columns.map((col) => (
                     <TableCell key={col.key} className={col.className}>
                       {col.render
                         ? col.render(item)
-                        : (item[col.key] as React.ReactNode) ?? '-'}
+                        : ((item as any)[col.key] as React.ReactNode) ?? '-'}
                     </TableCell>
                   ))}
                 </TableRow>

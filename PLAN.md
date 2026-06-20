@@ -532,12 +532,12 @@ El motor de validación requiere **lógica temporal y matemática precisa** (com
 
 ### 9.1 Tareas
 
-- [ ] **5.1** Crear página `/ordenes-servicio` con listado de órdenes:
+- [x] **5.1** Crear página `/ordenes-servicio` con listado de órdenes:
   - Tabla con columnas: Folio, Cliente, Norma(s), Fecha, Técnico(s), Estado, Acciones
   - Filtros por: estado, cliente, fecha, técnico
   - Ordenamiento y paginación
   - Badges de color por estado
-- [ ] **5.2** Crear formulario de nueva orden de servicio (`/ordenes-servicio/nueva`):
+- [x] **5.2** Crear formulario de nueva orden de servicio (`/ordenes-servicio/nueva`):
   - **Paso 1 — Datos generales:**
     - Selección de cliente (combobox con búsqueda)
     - Dirección del servicio (puede diferir de la dirección del cliente)
@@ -555,25 +555,25 @@ El motor de validación requiere **lógica temporal y matemática precisa** (com
     - Si hay errores: mostrar `<ConflictAlert>` y bloquear guardado
     - Si hay advertencias: mostrar y permitir guardado con confirmación
     - Si todo está limpio: guardar y confirmar
-- [ ] **5.3** Crear vista de detalle de orden de servicio (`/ordenes-servicio/[id]`):
+- [x] **5.3** Crear vista de detalle de orden de servicio (`/ordenes-servicio/[id]`):
   - Información completa de la OS
   - Recursos asignados con sus estados
   - Timeline de cambios (historial de auditoría)
   - Botones de acción: Editar, Cancelar, Iniciar, Completar
-- [ ] **5.4** Implementar flujo de estados de la OS:
+- [x] **5.4** Implementar flujo de estados de la OS:
   ```
   borrador → programada → en_curso → completada
                   ↓                       
               cancelada                   
   ```
-- [ ] **5.5** Implementar edición de OS con re-validación de conflictos
-- [ ] **5.6** Implementar cancelación con liberación automática de recursos
-- [ ] **5.7** Crear componente `<ResourceAvailabilityIndicator>`:
+- [x] **5.5** Implementar edición de OS con re-validación de conflictos
+- [x] **5.6** Implementar cancelación con liberación automática de recursos
+- [x] **5.7** Crear componente `<ResourceAvailabilityIndicator>`:
   - 🟢 Disponible
   - 🟡 Disponible con advertencia
   - 🔴 No disponible (tooltip con motivo)
   - 🔵 Información (ej. calibración próxima a vencer)
-- [ ] **5.8** Implementar notificaciones toast para acciones exitosas/fallidas
+- [x] **5.8** Implementar notificaciones toast para acciones exitosas/fallidas
 
 ### 9.2 Entregable
 Flujo completo de creación, edición, consulta y gestión de órdenes de servicio con validación de conflictos integrada.
