@@ -656,22 +656,22 @@ Los estados temporales permiten marcar un recurso como **no disponible** por un 
 
 ### 11.2 Tareas
 
-- [ ] **7.1** Crear página `/bloqueos` con listado de bloqueos activos y futuros:
+- [x] **7.1** Crear página `/bloqueos` con listado de bloqueos activos y futuros:
   - Filtro por tipo de recurso y motivo
   - Indicador visual de bloqueos activos vs programados vs finalizados
-- [ ] **7.2** Crear formulario de nuevo bloqueo:
+- [x] **7.2** Crear formulario de nuevo bloqueo:
   - Selector de tipo de recurso (técnico/vehículo/equipo)
   - Selector del recurso específico
   - Tipo de bloqueo (dropdown según tipo de recurso)
   - Fecha de inicio y fin
   - Observaciones
   - **Validación:** No permite crear bloqueo si el recurso tiene OS programadas en ese rango (muestra las OS afectadas y sugiere re-programarlas primero)
-- [ ] **7.3** Integrar bloqueos con el calendario (eventos visuales diferenciados)
+- [x] **7.3** Integrar bloqueos con el calendario (eventos visuales diferenciados)
 - [ ] **7.4** Crear alertas automáticas:
   - Equipo con calibración por vencer en ≤30 días → alerta en dashboard
   - Vehículo con mantenimiento programado en ≤7 días → alerta
   - Técnico con vacaciones próximas y OS asignadas → alerta de conflicto potencial
-- [ ] **7.5** Crear vista rápida "Estado actual de recursos":
+- [x] **7.5** Crear vista rápida "Estado actual de recursos":
   - Panel tipo semáforo: cuántos técnicos/vehículos/equipos están disponibles vs bloqueados
   - Acceso directo desde el dashboard
 - [ ] **7.6** Implementar finalización automática de bloqueos:
