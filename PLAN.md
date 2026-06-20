@@ -593,38 +593,38 @@ Este módulo es el más **integrativo** del proyecto: combina UI compleja (stepp
 
 ### 10.1 Tareas
 
-- [ ] **6.1** Crear página `/calendario` con FullCalendar integrado:
+- [x] **6.1** Crear página `/calendario` con FullCalendar integrado:
   - Vista mensual (dayGridMonth)
   - Vista semanal (timeGridWeek)
   - Vista diaria (timeGridDay)
   - Vista de agenda/lista (listWeek)
-- [ ] **6.2** Configurar fuentes de eventos:
+- [x] **6.2** Configurar fuentes de eventos:
   - Órdenes de servicio (color según estado)
   - Bloqueos de técnicos (vacaciones, incapacidades) — color gris
   - Mantenimientos de vehículos — color naranja
   - Calibraciones de equipos — color morado
-- [ ] **6.3** Implementar filtros laterales:
+- [x] **6.3** Implementar filtros laterales:
   - Por tipo de recurso (técnicos / vehículos / equipos)
   - Por recurso específico (ver calendario de Juan Pérez)
   - Por estado de OS
   - Por norma evaluada
-- [ ] **6.4** Implementar interactividad:
+- [x] **6.4** Implementar interactividad:
   - Click en evento → abrir detalle de OS en panel lateral
   - Click en día vacío → iniciar creación de nueva OS con fecha pre-llenada
   - Drag & Drop para re-programar OS (con re-validación de conflictos)
   - Resize de evento para ajustar duración
-- [ ] **6.5** Crear panel lateral `<EventDetailPanel>`:
+- [x] **6.5** Crear panel lateral `<EventDetailPanel>`:
   - Datos de la OS
   - Recursos asignados
   - Acciones rápidas (editar, cancelar)
-- [ ] **6.6** Implementar "mini calendarios" por recurso:
+- [x] **6.6** Implementar "mini calendarios" por recurso:
   - Vista compacta del calendario de un técnico/vehículo/equipo específico
   - Útil al momento de asignar recursos (ver disponibilidad visual)
-- [ ] **6.7** Personalizar estilos del calendario:
+- [x] **6.7** Personalizar estilos del calendario:
   - Colores consistentes con el tema del sistema
   - Indicadores visuales de carga (muchos servicios = color más intenso)
   - Diseño responsive para tablet/móvil
-- [ ] **6.8** Implementar actualización en tiempo real (Supabase Realtime):
+- [x] **6.8** Implementar actualización en tiempo real (Supabase Realtime):
   - Suscribirse a cambios en `ordenes_servicio` y `asignaciones_*`
   - Actualizar el calendario automáticamente cuando otro usuario crea/modifica una OS
 
