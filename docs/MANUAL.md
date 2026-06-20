@@ -1,5 +1,12 @@
 # Manual del Sistema STPS Logística
 
+> Versión: 1.1 — Actualizado post-despliegue
+
+## Acceso al sistema
+
+**URL producción:** `https://logistica-stps.vercel.app`
+**URL desarrollo:** `http://localhost:3000`
+
 ## Roles de usuario
 
 | Rol | Permisos |
