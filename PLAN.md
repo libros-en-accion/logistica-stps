@@ -235,8 +235,8 @@ El scaffolding requiere ejecutar múltiples comandos de configuración, crear ar
 
 ### 5.1 Tareas
 
-- [ ] **1.1** Diseñar schema completo de PostgreSQL (ver [Sección 15](#15-esquema-de-base-de-datos-detallado))
-- [ ] **1.2** Crear migración SQL para tablas principales:
+- [x] **1.1** Diseñar schema completo de PostgreSQL (ver [Sección 15](#15-esquema-de-base-de-datos-detallado))
+- [x] **1.2** Crear migración SQL para tablas principales:
   - `tecnicos` — Catálogo de técnicos evaluadores
   - `vehiculos` — Flotilla vehicular
   - `equipos_medicion` — Instrumentos de medición
@@ -248,26 +248,26 @@ El scaffolding requiere ejecutar múltiples comandos de configuración, crear ar
   - `asignaciones_equipos` — Relación OS ↔ Equipos
   - `bloqueos_recursos` — Estados temporales de no disponibilidad
   - `historial_cambios` — Log de auditoría
-- [ ] **1.3** Definir relaciones, foreign keys, índices y constraints
-- [ ] **1.4** Crear ENUMs para estados:
+- [x] **1.3** Definir relaciones, foreign keys, índices y constraints
+- [x] **1.4** Crear ENUMs para estados:
   - Estado de OS: `borrador`, `programada`, `en_curso`, `completada`, `cancelada`
   - Estado de recurso: `disponible`, `asignado`, `en_mantenimiento`, `en_calibracion`, `baja`, `vacaciones`, `incapacidad`
   - Tipo de bloqueo: `vacaciones`, `incapacidad`, `mantenimiento`, `calibracion`, `prestamo`, `otro`
-- [ ] **1.5** Implementar Row Level Security (RLS) policies:
+- [x] **1.5** Implementar Row Level Security (RLS) policies:
   - Política por rol de usuario
   - Restricción de escritura solo a roles autorizados
   - Lectura filtrada por permisos
-- [ ] **1.6** Crear funciones PostgreSQL para validación de conflictos (server-side):
+- [x] **1.6** Crear funciones PostgreSQL para validación de conflictos (server-side):
   - `fn_verificar_disponibilidad_tecnico(tecnico_id, fecha_inicio, fecha_fin)`
   - `fn_verificar_disponibilidad_vehiculo(vehiculo_id, fecha_inicio, fecha_fin)`
   - `fn_verificar_disponibilidad_equipo(equipo_id, fecha_inicio, fecha_fin)`
   - `fn_verificar_vigencia_calibracion(equipo_id, fecha_servicio)`
-- [ ] **1.7** Crear triggers de auditoría para `historial_cambios`
-- [ ] **1.8** Crear vistas materializadas para consultas frecuentes:
+- [x] **1.7** Crear triggers de auditoría para `historial_cambios`
+- [x] **1.8** Crear vistas materializadas para consultas frecuentes:
   - `vista_calendario_recursos` — Vista consolidada para el calendario
   - `vista_disponibilidad_diaria` — Resumen de disponibilidad por día
-- [ ] **1.9** Insertar datos semilla (seed data) para pruebas
-- [ ] **1.10** Generar tipos TypeScript desde el schema de Supabase:
+- [x] **1.9** Insertar datos semilla (seed data) para pruebas
+- [x] **1.10** Generar tipos TypeScript desde el schema de Supabase:
   ```bash
   npx supabase gen types typescript --project-id <PROJECT_ID> > src/types/database.types.ts
   ```
