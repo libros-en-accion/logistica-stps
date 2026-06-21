@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ordenServicioSchema, type OrdenServicioFormValues } from '@/lib/schemas/orden-servicio.schema'
@@ -70,6 +70,30 @@ export function OrdenForm({ onSuccess }: Props) {
     })
   })
 
+  // Validar automáticamente al llegar al paso 3 (Confirmación)
+  useEffect(() => {
+    if (step === 3) {
+      if (!fechaInicio || !fechaFin) return
+
+      const datos = {
+        fechaInicio: new Date(fechaInicio),
+        fechaFin: new Date(fechaFin),
+        clienteId: form.getValues('cliente_id'),
+        normasIds: form.getValues('normas_ids'),
+        tecnicosIds: form.getValues('tecnicos_ids'),
+        vehiculosIds: form.getValues('vehiculos_ids') ?? [],
+        equiposIds: form.getValues('equipos_ids') ?? [],
+      }
+
+      setLoading(true)
+      validarOrdenServicio(datos).then((result) => {
+        setErrores(result.errores)
+        setAdvertencias(result.advertencias)
+        setLoading(false)
+      })
+    }
+  }, [step, fechaInicio, fechaFin, form])
+
   async function handleValidar() {
     if (!fechaInicio || !fechaFin) return
 
@@ -91,6 +115,7 @@ export function OrdenForm({ onSuccess }: Props) {
 
     if (result.valido) {
       setLoading(true)
+      let osId: string | null = null
       try {
         // 1. Guardar OS
         const { data: newOS, error: osError } = await supabase
@@ -107,7 +132,7 @@ export function OrdenForm({ onSuccess }: Props) {
           .single()
 
         if (osError) throw new Error(`Error al crear la orden: ${osError.message}`)
-        const osId = newOS.id
+        osId = newOS.id
 
         // 2. Guardar normas evaluadas (M:M)
         if (datos.normasIds.length > 0) {
@@ -159,6 +184,10 @@ export function OrdenForm({ onSuccess }: Props) {
 
         onSuccess?.()
       } catch (err: any) {
+        // Rollback: Si se alcanzó a crear la orden pero falló alguna relación, la eliminamos para evitar registros huérfanos
+        if (osId) {
+          await supabase.from('ordenes_servicio').delete().eq('id', osId)
+        }
         toast.error(err.message || 'Error al guardar la orden de servicio')
         console.error('Error al guardar OS completa:', err)
       } finally {
