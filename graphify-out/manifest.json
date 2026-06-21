@@ -70,8 +70,8 @@
     "semantic_hash": ""
   },
   "src/app/(app)/ordenes-servicio/[id]/page.tsx": {
-    "mtime": 1782015607.6254086,
-    "ast_hash": "66550b303ed259feba247941d7f3a0ab",
+    "mtime": 1782016091.9443352,
+    "ast_hash": "de7052a70abd470ae323d4f878f7af40",
     "semantic_hash": ""
   },
   "src/app/(app)/ordenes-servicio/nueva/page.tsx": {

@@ -80,6 +80,26 @@ export default function DetalleOrdenPage({ params }: { params: Promise<{ id: str
     router.refresh()
   }
 
+  async function handleEliminar() {
+    if (confirm('¿Está seguro de que desea eliminar permanentemente esta orden de servicio? Esta acción no se puede deshacer y liberará todos los recursos asignados.')) {
+      setLoading(true)
+      const { error } = await supabase
+        .from('ordenes_servicio')
+        .delete()
+        .eq('id', id)
+
+      if (error) {
+        toast.error(`Error al eliminar la orden: ${error.message}`)
+        setLoading(false)
+        return
+      }
+
+      toast.success('Orden de servicio eliminada correctamente')
+      router.push('/ordenes-servicio')
+      router.refresh()
+    }
+  }
+
   if (loading) return <p className="text-muted-foreground">Cargando...</p>
   if (!os) return <p className="text-destructive">Orden no encontrada</p>
 
@@ -112,6 +132,11 @@ export default function DetalleOrdenPage({ params }: { params: Promise<{ id: str
           {['borrador', 'programada'].includes(os.estado) && (
             <Button variant="destructive" onClick={() => handleCambiarEstado('cancelada')}>
               <XCircle className="mr-1 h-4 w-4" /> Cancelar
+            </Button>
+          )}
+          {['borrador', 'programada', 'cancelada'].includes(os.estado) && (
+            <Button variant="outline" className="text-destructive hover:bg-destructive/10 border-destructive/20" onClick={handleEliminar}>
+              <Trash2 className="mr-1 h-4 w-4" /> Eliminar
             </Button>
           )}
         </div>
