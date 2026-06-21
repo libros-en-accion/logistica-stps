@@ -1,16 +1,16 @@
 # Graph Report - 006_LOGISTICA  (2026-06-21)
 
 ## Corpus Check
-- 116 files · ~28,756 words
+- 116 files · ~29,045 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 548 nodes · 1115 edges · 41 communities (30 shown, 11 thin omitted)
+- 548 nodes · 1117 edges · 41 communities (30 shown, 11 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4cdad84e`
+- Built from commit: `a0f20bf6`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -54,7 +54,7 @@
 
 ## God Nodes (most connected - your core abstractions)
 1. `cn()` - 117 edges
-2. `createClient()` - 38 edges
+2. `createClient()` - 39 edges
 3. `Button()` - 26 edges
 4. `compilerOptions` - 16 edges
 5. `Input()` - 14 edges
@@ -192,7 +192,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `cn()` connect `Community 10` to `Community 0`, `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 8`, `Community 40`, `Community 13`, `Community 14`, `Community 15`, `Community 16`, `Community 17`, `Community 20`?**
   _High betweenness centrality (0.176) - this node is a cross-community bridge._
 - **Why does `createClient()` connect `Community 1` to `Community 0`, `Community 3`, `Community 4`, `Community 8`, `Community 14`?**
-  _High betweenness centrality (0.050) - this node is a cross-community bridge._
+  _High betweenness centrality (0.051) - this node is a cross-community bridge._
 - **Why does `Button()` connect `Community 8` to `Community 0`, `Community 1`, `Community 3`, `Community 4`, `Community 10`, `Community 14`, `Community 15`, `Community 16`, `Community 17`?**
   _High betweenness centrality (0.027) - this node is a cross-community bridge._
 - **What connects `$schema`, `style`, `rsc` to the rest of the system?**

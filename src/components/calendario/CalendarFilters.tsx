@@ -37,7 +37,7 @@ export function CalendarFilters() {
         <div className="space-y-1.5 text-xs text-muted-foreground">
           <p>Click en evento → ver detalle</p>
           <p>Click en día → nueva orden</p>
-          <p>Drag & drop → re-programar</p>
+          <p>Arrastrar y soltar → re-programar</p>
         </div>
       </div>
     </div>

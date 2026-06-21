@@ -1567,7 +1567,7 @@
       "label": "PanelEvent",
       "file_type": "code",
       "source_file": "src/components/calendario/EventDetailPanel.tsx",
-      "source_location": "L8",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "calendario_eventdetailpanel_panelevent",
       "community": 0,
@@ -1577,7 +1577,7 @@
       "label": "EventDetailPanelProps",
       "file_type": "code",
       "source_file": "src/components/calendario/EventDetailPanel.tsx",
-      "source_location": "L22",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "calendario_eventdetailpanel_eventdetailpanelprops",
       "community": 0,
@@ -1587,7 +1587,7 @@
       "label": "EventDetailPanel()",
       "file_type": "code",
       "source_file": "src/components/calendario/EventDetailPanel.tsx",
-      "source_location": "L27",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "calendario_eventdetailpanel_eventdetailpanel",
       "community": 0,
@@ -8226,9 +8226,9 @@
       "source_file": "src/app/(app)/ordenes-servicio/[id]/editar/page.tsx",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "editar_page",
-      "target": "editar_page_editarordenpage",
-      "confidence_score": 1.0
+      "target": "editar_page_editarordenpage"
     },
     {
       "relation": "imports_from",
@@ -8237,9 +8237,9 @@
       "source_file": "src/app/(app)/ordenes-servicio/[id]/editar/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "editar_page",
-      "target": "ordenes_ordenform",
-      "confidence_score": 1.0
+      "target": "ordenes_ordenform"
     },
     {
       "relation": "imports",
@@ -8248,9 +8248,9 @@
       "source_file": "src/app/(app)/ordenes-servicio/[id]/editar/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "editar_page",
-      "target": "ordenes_ordenform_ordenform",
-      "confidence_score": 1.0
+      "target": "ordenes_ordenform_ordenform"
     },
     {
       "relation": "imports_from",
@@ -8259,9 +8259,9 @@
       "source_file": "src/app/(app)/ordenes-servicio/[id]/editar/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "editar_page",
-      "target": "ui_button",
-      "confidence_score": 1.0
+      "target": "ui_button"
     },
     {
       "relation": "imports",
@@ -8270,9 +8270,9 @@
       "source_file": "src/app/(app)/ordenes-servicio/[id]/editar/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "editar_page",
-      "target": "ui_button_button",
-      "confidence_score": 1.0
+      "target": "ui_button_button"
     },
     {
       "relation": "contains",
@@ -9742,6 +9742,28 @@
       "confidence_score": 1.0,
       "source": "calendario_eventdetailpanel",
       "target": "shared_statusbadge_statusbadge"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/calendario/EventDetailPanel.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "calendario_eventdetailpanel",
+      "target": "supabase_client",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/calendario/EventDetailPanel.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "calendario_eventdetailpanel",
+      "target": "supabase_client_createclient",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -17327,5 +17349,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "4cdad84e4715364e9696a05898aa6b18fcbfdc21"
+  "built_at_commit": "a0f20bf6aeed96c12c275aedb52e506a53f92e22"
 }
