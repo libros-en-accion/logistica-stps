@@ -16,6 +16,7 @@ import { ResourceAvailabilityIndicator } from '@/components/shared/ResourceAvail
 import { validarOrdenServicio } from '@/lib/validations/motor-validacion'
 import type { ConflictoDetectado, Advertencia } from '@/lib/validations/tipos'
 import { cn } from '@/lib/utils'
+import { toast } from 'sonner'
 
 interface Props {
   onSuccess?: () => void
@@ -89,22 +90,80 @@ export function OrdenForm({ onSuccess }: Props) {
     setLoading(false)
 
     if (result.valido) {
-      // Guardar OS
-      const { error } = await supabase.from('ordenes_servicio').insert({
-        cliente_id: datos.clienteId,
-        direccion_servicio: form.getValues('direccion_servicio'),
-        fecha_inicio: datos.fechaInicio.toISOString(),
-        fecha_fin: datos.fechaFin.toISOString(),
-        observaciones: form.getValues('observaciones'),
-        estado: 'programada',
-      }).select('id').single()
+      setLoading(true)
+      try {
+        // 1. Guardar OS
+        const { data: newOS, error: osError } = await supabase
+          .from('ordenes_servicio')
+          .insert({
+            cliente_id: datos.clienteId,
+            direccion_servicio: form.getValues('direccion_servicio'),
+            fecha_inicio: datos.fechaInicio.toISOString(),
+            fecha_fin: datos.fechaFin.toISOString(),
+            observaciones: form.getValues('observaciones'),
+            estado: 'programada',
+          })
+          .select('id')
+          .single()
 
-      if (error) {
-        console.error('Error al crear OS:', error)
-        return
+        if (osError) throw new Error(`Error al crear la orden: ${osError.message}`)
+        const osId = newOS.id
+
+        // 2. Guardar normas evaluadas (M:M)
+        if (datos.normasIds.length > 0) {
+          const normasInserts = datos.normasIds.map((normaId: string) => ({
+            orden_servicio_id: osId,
+            norma_id: normaId,
+          }))
+          const { error: normasError } = await supabase
+            .from('ordenes_normas')
+            .insert(normasInserts)
+          if (normasError) throw new Error(`Error al asociar normas a la orden: ${normasError.message}`)
+        }
+
+        // 3. Guardar técnicos asignados
+        if (datos.tecnicosIds.length > 0) {
+          const tecnicosInserts = datos.tecnicosIds.map((tecnicoId: string) => ({
+            orden_servicio_id: osId,
+            tecnico_id: tecnicoId,
+          }))
+          const { error: tecnicosError } = await supabase
+            .from('asignaciones_tecnicos')
+            .insert(tecnicosInserts)
+          if (tecnicosError) throw new Error(`Error al asignar técnicos: ${tecnicosError.message}`)
+        }
+
+        // 4. Guardar vehículos asignados
+        if (datos.vehiculosIds.length > 0) {
+          const vehiculosInserts = datos.vehiculosIds.map((vehiculoId: string) => ({
+            orden_servicio_id: osId,
+            vehiculo_id: vehiculoId,
+          }))
+          const { error: vehiculosError } = await supabase
+            .from('asignaciones_vehiculos')
+            .insert(vehiculosInserts)
+          if (vehiculosError) throw new Error(`Error al asignar vehículos: ${vehiculosError.message}`)
+        }
+
+        // 5. Guardar equipos asignados
+        if (datos.equiposIds.length > 0) {
+          const equiposInserts = datos.equiposIds.map((equipoId: string) => ({
+            orden_servicio_id: osId,
+            equipo_id: equipoId,
+          }))
+          const { error: equiposError } = await supabase
+            .from('asignaciones_equipos')
+            .insert(equiposInserts)
+          if (equiposError) throw new Error(`Error al asignar equipos: ${equiposError.message}`)
+        }
+
+        onSuccess?.()
+      } catch (err: any) {
+        toast.error(err.message || 'Error al guardar la orden de servicio')
+        console.error('Error al guardar OS completa:', err)
+      } finally {
+        setLoading(false)
       }
-
-      onSuccess?.()
     }
   }
 

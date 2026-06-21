@@ -1997,7 +1997,7 @@
       "label": "Props",
       "file_type": "code",
       "source_file": "src/components/ordenes/OrdenForm.tsx",
-      "source_location": "L20",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "ordenes_ordenform_props",
       "community": 1,
@@ -2007,7 +2007,7 @@
       "label": "OrdenForm()",
       "file_type": "code",
       "source_file": "src/components/ordenes/OrdenForm.tsx",
-      "source_location": "L24",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "ordenes_ordenform_ordenform",
       "community": 1,
@@ -7436,9 +7436,9 @@
       "source_file": "src/app/(app)/catalogos/tecnicos/page.tsx",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_app_catalogos_tecnicos_page_tsx_tecnicos_page",
-      "target": "supabase_client",
-      "confidence_score": 1.0
+      "target": "supabase_client"
     },
     {
       "relation": "imports",
@@ -7447,9 +7447,9 @@
       "source_file": "src/app/(app)/catalogos/tecnicos/page.tsx",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_app_catalogos_tecnicos_page_tsx_tecnicos_page",
-      "target": "supabase_client_createclient",
-      "confidence_score": 1.0
+      "target": "supabase_client_createclient"
     },
     {
       "relation": "contains",
@@ -17068,5 +17068,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f283e6be31cd3b05c985430485fa0bd747036bcd"
+  "built_at_commit": "7091baa4061225aa12fd1587a7b582970c4ca246"
 }
