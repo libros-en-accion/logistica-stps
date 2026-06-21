@@ -78,7 +78,6 @@ export async function validarDisponibilidadTecnico(
     .from('asignaciones_tecnicos')
     .select('orden_servicio_id, ordenes_servicio!inner(folio, fecha_inicio, fecha_fin, estado)')
     .eq('tecnico_id', tecnicoId)
-    .not('ordenes_servicio.estado', 'in', '("cancelada","completada")')
     .lt('ordenes_servicio.fecha_inicio', rangoFinConBuffer.toISOString())
     .gt('ordenes_servicio.fecha_fin', rangoInicioConBuffer.toISOString())
 
@@ -89,8 +88,13 @@ export async function validarDisponibilidadTecnico(
 
   const { data: asignaciones } = await query
 
-  if (asignaciones && asignaciones.length > 0) {
-    for (const a of asignaciones) {
+  const asignacionesActivas = (asignaciones ?? []).filter((a) => {
+    const os = (a as any).ordenes_servicio
+    return os && !['cancelada', 'completada'].includes(os.estado)
+  })
+
+  if (asignacionesActivas.length > 0) {
+    for (const a of asignacionesActivas) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const os = (a as any).ordenes_servicio
       const inicioStr = new Date(os.fecha_inicio).toLocaleString('es-MX', {
@@ -116,11 +120,22 @@ export async function validarDisponibilidadTecnico(
   // Advertencia: verificar si tiene muchos servicios en la semana (>4)
   const inicioSemana = new Date(rango.inicio)
   inicioSemana.setDate(inicioSemana.getDate() - 7)
-  const { count } = await supabase
+  const finSemana = new Date(rango.inicio)
+  finSemana.setDate(finSemana.getDate() + 7)
+
+  const { data: asignacionesSemana } = await supabase
     .from('asignaciones_tecnicos')
-    .select('*', { count: 'exact', head: true })
+    .select('ordenes_servicio!inner(fecha_inicio, estado)')
     .eq('tecnico_id', tecnicoId)
-    .gte('created_at', inicioSemana.toISOString())
+    .gte('ordenes_servicio.fecha_inicio', inicioSemana.toISOString())
+    .lte('ordenes_servicio.fecha_inicio', finSemana.toISOString())
+
+  const activasSemana = (asignacionesSemana ?? []).filter((a) => {
+    const os = (a as any).ordenes_servicio
+    return os && !['cancelada', 'completada'].includes(os.estado)
+  })
+
+  const count = activasSemana.length
 
   if (count && count >= 4) {
     advertencias.push({

@@ -74,7 +74,6 @@ export async function validarDisponibilidadVehiculo(
     .from('asignaciones_vehiculos')
     .select('orden_servicio_id, ordenes_servicio!inner(folio, fecha_inicio, fecha_fin, estado)')
     .eq('vehiculo_id', vehiculoId)
-    .not('ordenes_servicio.estado', 'in', '("cancelada","completada")')
     .lt('ordenes_servicio.fecha_inicio', rango.fin.toISOString())
     .gt('ordenes_servicio.fecha_fin', rango.inicio.toISOString())
 
@@ -85,8 +84,13 @@ export async function validarDisponibilidadVehiculo(
 
   const { data: asignaciones } = await query
 
-  if (asignaciones && asignaciones.length > 0) {
-    for (const a of asignaciones) {
+  const asignacionesActivas = (asignaciones ?? []).filter((a) => {
+    const os = (a as any).ordenes_servicio
+    return os && !['cancelada', 'completada'].includes(os.estado)
+  })
+
+  if (asignacionesActivas.length > 0) {
+    for (const a of asignacionesActivas) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const os = (a as any).ordenes_servicio
       const inicioStr = new Date(os.fecha_inicio).toLocaleString('es-MX', {

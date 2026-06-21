@@ -455,18 +455,18 @@
     "semantic_hash": ""
   },
   "src/lib/validations/validar-equipo.ts": {
-    "mtime": 1782018161.3877485,
-    "ast_hash": "0220a695fb7556c3bd9f9a65e5480a00",
+    "mtime": 1782060607.516586,
+    "ast_hash": "8c857c57772020c6984e7e0e4ddd2966",
     "semantic_hash": ""
   },
   "src/lib/validations/validar-tecnico.ts": {
-    "mtime": 1782018155.9957604,
-    "ast_hash": "4863082e5353a34f18ace924bb11cb97",
+    "mtime": 1782060603.5085938,
+    "ast_hash": "f1dab4af4e9aa2ea3cb156560f3c188e",
     "semantic_hash": ""
   },
   "src/lib/validations/validar-vehiculo.ts": {
-    "mtime": 1782018158.7717543,
-    "ast_hash": "dd91fc74907f99d699f741477645de53",
+    "mtime": 1782060605.0565908,
+    "ast_hash": "f26eb883a8ec39f357ac2706a4fc6cdd",
     "semantic_hash": ""
   },
   "src/proxy.ts": {

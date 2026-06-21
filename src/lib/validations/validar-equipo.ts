@@ -99,7 +99,6 @@ export async function validarDisponibilidadEquipo(
     .from('asignaciones_equipos')
     .select('orden_servicio_id, ordenes_servicio!inner(folio, fecha_inicio, fecha_fin, estado)')
     .eq('equipo_id', equipoId)
-    .not('ordenes_servicio.estado', 'in', '("cancelada","completada")')
     .lt('ordenes_servicio.fecha_inicio', rango.fin.toISOString())
     .gt('ordenes_servicio.fecha_fin', rango.inicio.toISOString())
 
@@ -110,8 +109,13 @@ export async function validarDisponibilidadEquipo(
 
   const { data: asignaciones } = await query
 
-  if (asignaciones && asignaciones.length > 0) {
-    for (const a of asignaciones) {
+  const asignacionesActivas = (asignaciones ?? []).filter((a) => {
+    const os = (a as any).ordenes_servicio
+    return os && !['cancelada', 'completada'].includes(os.estado)
+  })
+
+  if (asignacionesActivas.length > 0) {
+    for (const a of asignacionesActivas) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const os = (a as any).ordenes_servicio
       const inicioStr = new Date(os.fecha_inicio).toLocaleString('es-MX', {
@@ -134,19 +138,7 @@ export async function validarDisponibilidadEquipo(
     }
   }
 
-  // Verificar si el equipo es requerido por alguna de las normas
-  if (normasIds.length > 0) {
-    const { data: equiposRequeridos } = await supabase
-      .from('norma_equipos')
-      .select('equipo_tipo')
-      .in('norma_id', normasIds)
 
-    const tiposRequeridos = [...new Set((equiposRequeridos ?? []).map((e) => e.equipo_tipo))]
-    const tipoEquipo = equipo.descripcion.toLowerCase()
-
-    // Verificación básica: el equipo es relevante si su tipo está en la lista de requeridos
-    // Nota: esto requeriría una clasificación más precisa por tipo de equipo
-  }
 
   return {
     disponible: errores.length === 0,
