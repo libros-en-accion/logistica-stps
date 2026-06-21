@@ -270,7 +270,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "package",
-      "community": 6,
+      "community": 5,
       "norm_label": "package.json"
     },
     {
@@ -280,7 +280,7 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "package_name",
-      "community": 6,
+      "community": 5,
       "norm_label": "name"
     },
     {
@@ -290,7 +290,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "package_version",
-      "community": 6,
+      "community": 5,
       "norm_label": "version"
     },
     {
@@ -300,7 +300,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "package_private",
-      "community": 6,
+      "community": 5,
       "norm_label": "private"
     },
     {
@@ -310,7 +310,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "package_scripts",
-      "community": 6,
+      "community": 5,
       "norm_label": "scripts"
     },
     {
@@ -320,7 +320,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "package_scripts_dev",
-      "community": 6,
+      "community": 5,
       "norm_label": "dev"
     },
     {
@@ -330,7 +330,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "package_scripts_build",
-      "community": 6,
+      "community": 5,
       "norm_label": "build"
     },
     {
@@ -340,7 +340,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "package_scripts_start",
-      "community": 6,
+      "community": 5,
       "norm_label": "start"
     },
     {
@@ -350,7 +350,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "package_scripts_lint",
-      "community": 6,
+      "community": 5,
       "norm_label": "lint"
     },
     {
@@ -360,7 +360,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "package_scripts_test",
-      "community": 6,
+      "community": 5,
       "norm_label": "test"
     },
     {
@@ -370,7 +370,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "package_scripts_test_watch",
-      "community": 6,
+      "community": 5,
       "norm_label": "test:watch"
     },
     {
@@ -890,37 +890,47 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "calendario_page",
-      "community": 17,
+      "community": 8,
       "norm_label": "page.tsx"
     },
     {
       "label": "CalendarView",
       "file_type": "code",
       "source_file": "src/app/(app)/calendario/page.tsx",
-      "source_location": "L10",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "calendario_page_calendarview",
-      "community": 17,
+      "community": 8,
       "norm_label": "calendarview"
     },
     {
       "label": "PanelEvent",
       "file_type": "code",
       "source_file": "src/app/(app)/calendario/page.tsx",
-      "source_location": "L18",
+      "source_location": "L30",
       "_origin": "ast",
       "id": "calendario_page_panelevent",
-      "community": 17,
+      "community": 8,
       "norm_label": "panelevent"
+    },
+    {
+      "label": "RescheduleState",
+      "file_type": "code",
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "calendario_page_reschedulestate",
+      "community": 8,
+      "norm_label": "reschedulestate"
     },
     {
       "label": "CalendarioPage()",
       "file_type": "code",
       "source_file": "src/app/(app)/calendario/page.tsx",
-      "source_location": "L34",
+      "source_location": "L56",
       "_origin": "ast",
       "id": "calendario_page_calendariopage",
-      "community": 17,
+      "community": 8,
       "norm_label": "calendariopage()"
     },
     {
@@ -1140,7 +1150,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "id_page",
-      "community": 3,
+      "community": 0,
       "norm_label": "page.tsx"
     },
     {
@@ -1150,7 +1160,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "id_page_osdetalle",
-      "community": 3,
+      "community": 0,
       "norm_label": "osdetalle"
     },
     {
@@ -1330,7 +1340,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "login_page_loginpage",
-      "community": 2,
+      "community": 3,
       "norm_label": "loginpage()"
     },
     {
@@ -1370,7 +1380,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "registro_page_registropage",
-      "community": 2,
+      "community": 3,
       "norm_label": "registropage()"
     },
     {
@@ -1450,7 +1460,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "calendario_calendarfilters",
-      "community": 17,
+      "community": 8,
       "norm_label": "calendarfilters.tsx"
     },
     {
@@ -1460,7 +1470,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "calendario_calendarfilters_calendarfilters",
-      "community": 17,
+      "community": 8,
       "norm_label": "calendarfilters()"
     },
     {
@@ -1517,7 +1527,7 @@
       "label": "CalendarView()",
       "file_type": "code",
       "source_file": "src/components/calendario/CalendarView.tsx",
-      "source_location": "L64",
+      "source_location": "L65",
       "_origin": "ast",
       "id": "calendario_calendarview_calendarview",
       "community": 1,
@@ -1530,7 +1540,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "calendario_eventdetailpanel",
-      "community": 17,
+      "community": 0,
       "norm_label": "eventdetailpanel.tsx"
     },
     {
@@ -1540,7 +1550,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "calendario_eventdetailpanel_panelevent",
-      "community": 17,
+      "community": 0,
       "norm_label": "panelevent"
     },
     {
@@ -1550,7 +1560,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "calendario_eventdetailpanel_eventdetailpanelprops",
-      "community": 17,
+      "community": 0,
       "norm_label": "eventdetailpanelprops"
     },
     {
@@ -1560,7 +1570,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "calendario_eventdetailpanel_eventdetailpanel",
-      "community": 17,
+      "community": 8,
       "norm_label": "eventdetailpanel()"
     },
     {
@@ -1690,7 +1700,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "catalogos_vehiculoform",
-      "community": 3,
+      "community": 4,
       "norm_label": "vehiculoform.tsx"
     },
     {
@@ -1700,7 +1710,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "catalogos_vehiculoform_props",
-      "community": 3,
+      "community": 4,
       "norm_label": "props"
     },
     {
@@ -1710,7 +1720,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "catalogos_vehiculoform_vehiculoform",
-      "community": 3,
+      "community": 4,
       "norm_label": "vehiculoform()"
     },
     {
@@ -2060,7 +2070,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "shared_datatable",
-      "community": 14,
+      "community": 0,
       "norm_label": "datatable.tsx"
     },
     {
@@ -2080,7 +2090,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "shared_datatable_datatableprops",
-      "community": 14,
+      "community": 0,
       "norm_label": "datatableprops"
     },
     {
@@ -2170,7 +2180,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "shared_formdialog",
-      "community": 0,
+      "community": 8,
       "norm_label": "formdialog.tsx"
     },
     {
@@ -2180,7 +2190,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "shared_formdialog_formdialogprops",
-      "community": 0,
+      "community": 8,
       "norm_label": "formdialogprops"
     },
     {
@@ -2200,7 +2210,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "shared_protectedroute",
-      "community": 2,
+      "community": 14,
       "norm_label": "protectedroute.tsx"
     },
     {
@@ -2210,7 +2220,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "shared_protectedroute_protectedroute",
-      "community": 2,
+      "community": 14,
       "norm_label": "protectedroute()"
     },
     {
@@ -2290,7 +2300,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "shared_rolegate",
-      "community": 2,
+      "community": 14,
       "norm_label": "rolegate.tsx"
     },
     {
@@ -2300,7 +2310,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "shared_rolegate_rolegateprops",
-      "community": 2,
+      "community": 14,
       "norm_label": "rolegateprops"
     },
     {
@@ -2310,7 +2320,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "shared_rolegate_rolegate",
-      "community": 2,
+      "community": 14,
       "norm_label": "rolegate()"
     },
     {
@@ -2360,7 +2370,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_avatar",
-      "community": 10,
+      "community": 2,
       "norm_label": "avatar.tsx"
     },
     {
@@ -2380,7 +2390,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "ui_avatar_avatarimage",
-      "community": 10,
+      "community": 2,
       "norm_label": "avatarimage()"
     },
     {
@@ -2390,7 +2400,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "ui_avatar_avatarfallback",
-      "community": 10,
+      "community": 2,
       "norm_label": "avatarfallback()"
     },
     {
@@ -2400,7 +2410,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "ui_avatar_avatarbadge",
-      "community": 10,
+      "community": 2,
       "norm_label": "avatarbadge()"
     },
     {
@@ -2410,7 +2420,7 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "ui_avatar_avatargroup",
-      "community": 10,
+      "community": 2,
       "norm_label": "avatargroup()"
     },
     {
@@ -2420,7 +2430,7 @@
       "source_location": "L86",
       "_origin": "ast",
       "id": "ui_avatar_avatargroupcount",
-      "community": 10,
+      "community": 2,
       "norm_label": "avatargroupcount()"
     },
     {
@@ -2510,7 +2520,7 @@
       "source_location": "L183",
       "_origin": "ast",
       "id": "ui_calendar_calendardaybutton",
-      "community": 0,
+      "community": 10,
       "norm_label": "calendardaybutton()"
     },
     {
@@ -2600,7 +2610,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_command",
-      "community": 8,
+      "community": 17,
       "norm_label": "command.tsx"
     },
     {
@@ -2610,7 +2620,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "ui_command_command",
-      "community": 8,
+      "community": 17,
       "norm_label": "command()"
     },
     {
@@ -2620,7 +2630,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "ui_command_commanddialog",
-      "community": 8,
+      "community": 17,
       "norm_label": "commanddialog()"
     },
     {
@@ -2630,7 +2640,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "ui_command_commandinput",
-      "community": 8,
+      "community": 17,
       "norm_label": "commandinput()"
     },
     {
@@ -2640,7 +2650,7 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "ui_command_commandlist",
-      "community": 8,
+      "community": 17,
       "norm_label": "commandlist()"
     },
     {
@@ -2650,7 +2660,7 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "ui_command_commandempty",
-      "community": 8,
+      "community": 17,
       "norm_label": "commandempty()"
     },
     {
@@ -2660,7 +2670,7 @@
       "source_location": "L121",
       "_origin": "ast",
       "id": "ui_command_commandgroup",
-      "community": 8,
+      "community": 17,
       "norm_label": "commandgroup()"
     },
     {
@@ -2670,7 +2680,7 @@
       "source_location": "L137",
       "_origin": "ast",
       "id": "ui_command_commandseparator",
-      "community": 8,
+      "community": 17,
       "norm_label": "commandseparator()"
     },
     {
@@ -2680,7 +2690,7 @@
       "source_location": "L150",
       "_origin": "ast",
       "id": "ui_command_commanditem",
-      "community": 8,
+      "community": 17,
       "norm_label": "commanditem()"
     },
     {
@@ -2690,7 +2700,7 @@
       "source_location": "L170",
       "_origin": "ast",
       "id": "ui_command_commandshortcut",
-      "community": 8,
+      "community": 17,
       "norm_label": "commandshortcut()"
     },
     {
@@ -3270,7 +3280,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_separator",
-      "community": 13,
+      "community": 10,
       "norm_label": "separator.tsx"
     },
     {
@@ -3280,7 +3290,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "ui_separator_separator",
-      "community": 13,
+      "community": 10,
       "norm_label": "separator()"
     },
     {
@@ -3400,7 +3410,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_table",
-      "community": 14,
+      "community": 10,
       "norm_label": "table.tsx"
     },
     {
@@ -3410,7 +3420,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "ui_table_table",
-      "community": 14,
+      "community": 10,
       "norm_label": "table()"
     },
     {
@@ -3420,7 +3430,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "ui_table_tableheader",
-      "community": 14,
+      "community": 10,
       "norm_label": "tableheader()"
     },
     {
@@ -3430,7 +3440,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "ui_table_tablebody",
-      "community": 14,
+      "community": 10,
       "norm_label": "tablebody()"
     },
     {
@@ -3440,7 +3450,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "ui_table_tablefooter",
-      "community": 14,
+      "community": 10,
       "norm_label": "tablefooter()"
     },
     {
@@ -3450,7 +3460,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "ui_table_tablerow",
-      "community": 14,
+      "community": 10,
       "norm_label": "tablerow()"
     },
     {
@@ -3460,7 +3470,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "ui_table_tablehead",
-      "community": 14,
+      "community": 10,
       "norm_label": "tablehead()"
     },
     {
@@ -3470,7 +3480,7 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "ui_table_tablecell",
-      "community": 14,
+      "community": 10,
       "norm_label": "tablecell()"
     },
     {
@@ -3480,7 +3490,7 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "ui_table_tablecaption",
-      "community": 14,
+      "community": 10,
       "norm_label": "tablecaption()"
     },
     {
@@ -3620,7 +3630,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "hooks_useauth",
-      "community": 2,
+      "community": 14,
       "norm_label": "useauth.ts"
     },
     {
@@ -3630,7 +3640,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "hooks_useauth_useauth",
-      "community": 2,
+      "community": 3,
       "norm_label": "useauth()"
     },
     {
@@ -3910,7 +3920,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "schemas_vehiculo_schema",
-      "community": 3,
+      "community": 4,
       "norm_label": "vehiculo.schema.ts"
     },
     {
@@ -3920,7 +3930,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "schemas_vehiculo_schema_vehiculoschema",
-      "community": 3,
+      "community": 4,
       "norm_label": "vehiculoschema"
     },
     {
@@ -3930,7 +3940,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "schemas_vehiculo_schema_vehiculoformvalues",
-      "community": 3,
+      "community": 4,
       "norm_label": "vehiculoformvalues"
     },
     {
@@ -4000,7 +4010,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_utils",
-      "community": 13,
+      "community": 0,
       "norm_label": "utils.ts"
     },
     {
@@ -4240,7 +4250,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "stores_auth_store",
-      "community": 2,
+      "community": 14,
       "norm_label": "auth-store.ts"
     },
     {
@@ -4250,7 +4260,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "stores_auth_store_authstate",
-      "community": 2,
+      "community": 14,
       "norm_label": "authstate"
     },
     {
@@ -4260,7 +4270,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "stores_auth_store_useauthstore",
-      "community": 2,
+      "community": 14,
       "norm_label": "useauthstore"
     },
     {
@@ -4270,7 +4280,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "types_database_types",
-      "community": 0,
+      "community": 14,
       "norm_label": "database.types.ts"
     },
     {
@@ -4280,7 +4290,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "types_database_types_json",
-      "community": 0,
+      "community": 14,
       "norm_label": "json"
     },
     {
@@ -4290,7 +4300,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "types_database_types_database",
-      "community": 0,
+      "community": 14,
       "norm_label": "database"
     },
     {
@@ -4300,7 +4310,7 @@
       "source_location": "L547",
       "_origin": "ast",
       "id": "types_database_types_tables",
-      "community": 0,
+      "community": 14,
       "norm_label": "tables"
     },
     {
@@ -4310,7 +4320,7 @@
       "source_location": "L548",
       "_origin": "ast",
       "id": "types_database_types_enums",
-      "community": 0,
+      "community": 14,
       "norm_label": "enums"
     },
     {
@@ -4320,7 +4330,7 @@
       "source_location": "L551",
       "_origin": "ast",
       "id": "types_database_types_perfilusuario",
-      "community": 2,
+      "community": 14,
       "norm_label": "perfilusuario"
     },
     {
@@ -4330,7 +4340,7 @@
       "source_location": "L552",
       "_origin": "ast",
       "id": "types_database_types_cliente",
-      "community": 0,
+      "community": 14,
       "norm_label": "cliente"
     },
     {
@@ -4340,7 +4350,7 @@
       "source_location": "L553",
       "_origin": "ast",
       "id": "types_database_types_normastps",
-      "community": 0,
+      "community": 14,
       "norm_label": "normastps"
     },
     {
@@ -4350,7 +4360,7 @@
       "source_location": "L554",
       "_origin": "ast",
       "id": "types_database_types_tecnico",
-      "community": 0,
+      "community": 14,
       "norm_label": "tecnico"
     },
     {
@@ -4360,7 +4370,7 @@
       "source_location": "L555",
       "_origin": "ast",
       "id": "types_database_types_vehiculo",
-      "community": 0,
+      "community": 14,
       "norm_label": "vehiculo"
     },
     {
@@ -4370,7 +4380,7 @@
       "source_location": "L556",
       "_origin": "ast",
       "id": "types_database_types_equipomedicion",
-      "community": 0,
+      "community": 14,
       "norm_label": "equipomedicion"
     },
     {
@@ -4380,7 +4390,7 @@
       "source_location": "L557",
       "_origin": "ast",
       "id": "types_database_types_ordenservicio",
-      "community": 0,
+      "community": 14,
       "norm_label": "ordenservicio"
     },
     {
@@ -4390,7 +4400,7 @@
       "source_location": "L558",
       "_origin": "ast",
       "id": "types_database_types_asignaciontecnico",
-      "community": 0,
+      "community": 14,
       "norm_label": "asignaciontecnico"
     },
     {
@@ -4400,7 +4410,7 @@
       "source_location": "L559",
       "_origin": "ast",
       "id": "types_database_types_asignacionvehiculo",
-      "community": 0,
+      "community": 14,
       "norm_label": "asignacionvehiculo"
     },
     {
@@ -4410,7 +4420,7 @@
       "source_location": "L560",
       "_origin": "ast",
       "id": "types_database_types_asignacionequipo",
-      "community": 0,
+      "community": 14,
       "norm_label": "asignacionequipo"
     },
     {
@@ -4420,7 +4430,7 @@
       "source_location": "L561",
       "_origin": "ast",
       "id": "types_database_types_bloqueorecurso",
-      "community": 0,
+      "community": 14,
       "norm_label": "bloqueorecurso"
     },
     {
@@ -4430,7 +4440,7 @@
       "source_location": "L562",
       "_origin": "ast",
       "id": "types_database_types_historialcambio",
-      "community": 0,
+      "community": 14,
       "norm_label": "historialcambio"
     },
     {
@@ -6578,6 +6588,159 @@
       "target": "calendario_page_panelevent"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "calendario_page",
+      "target": "calendario_page_reschedulestate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "calendario_page",
+      "target": "supabase_client",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "calendario_page",
+      "target": "supabase_client_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "calendario_page",
+      "target": "ui_button",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "calendario_page",
+      "target": "ui_button_button",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "calendario_page",
+      "target": "ui_dialog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "calendario_page",
+      "target": "ui_dialog_dialog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "calendario_page",
+      "target": "ui_dialog_dialogcontent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "calendario_page",
+      "target": "ui_dialog_dialogdescription",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "calendario_page",
+      "target": "ui_dialog_dialogfooter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "calendario_page",
+      "target": "ui_dialog_dialogheader",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "calendario_page",
+      "target": "ui_dialog_dialogtitle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "calendario_page",
+      "target": "validations_motor_validacion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "calendario_page",
+      "target": "validations_motor_validacion_validarordenservicio",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -8022,9 +8185,9 @@
       "source_file": "src/app/(app)/layout.tsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_app_layout_tsx_app_layout",
-      "target": "shared_protectedroute",
-      "confidence_score": 1.0
+      "target": "shared_protectedroute"
     },
     {
       "relation": "imports",
@@ -8033,9 +8196,9 @@
       "source_file": "src/app/(app)/layout.tsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_app_layout_tsx_app_layout",
-      "target": "shared_protectedroute_protectedroute",
-      "confidence_score": 1.0
+      "target": "shared_protectedroute_protectedroute"
     },
     {
       "relation": "contains",
@@ -17090,5 +17253,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "e2138c845d8522d22ff7f26134d9ad9e536e81a9"
+  "built_at_commit": "99d378c8134bd338e80729e08d914d940fc33ac8"
 }

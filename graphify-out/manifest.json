@@ -30,8 +30,8 @@
     "semantic_hash": ""
   },
   "src/app/(app)/calendario/page.tsx": {
-    "mtime": 1781922537.919583,
-    "ast_hash": "41db324c0e2a9b21ca21188f4cd34701",
+    "mtime": 1782067503.7882953,
+    "ast_hash": "369d9340e72175e0659fd3d755161f6f",
     "semantic_hash": ""
   },
   "src/app/(app)/catalogos/clientes/page.tsx": {
@@ -140,8 +140,8 @@
     "semantic_hash": ""
   },
   "src/components/calendario/CalendarView.tsx": {
-    "mtime": 1781922293.2939541,
-    "ast_hash": "b8469b47ee4aab35541c8c057d0b46a9",
+    "mtime": 1782067577.9440715,
+    "ast_hash": "022e0c008af22f0e5e94610bfd1b8b06",
     "semantic_hash": ""
   },
   "src/components/calendario/EventDetailPanel.tsx": {

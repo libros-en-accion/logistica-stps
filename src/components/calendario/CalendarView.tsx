@@ -57,8 +57,9 @@ const textColorMap: Record<string, string> = {
 interface CalendarViewProps {
   onEventClick?: (event: CalendarEvent) => void
   onDateSelect?: (start: Date, end: Date) => void
-  onEventDrop?: (eventId: string, newStart: Date, newEnd: Date) => void
+  onEventDrop?: (eventId: string, newStart: Date, newEnd: Date, revert: () => void) => void
   filterRecursoId?: string
+  refreshTrigger?: number
 }
 
 export function CalendarView({
@@ -66,6 +67,7 @@ export function CalendarView({
   onDateSelect,
   onEventDrop,
   filterRecursoId,
+  refreshTrigger,
 }: CalendarViewProps) {
   const calendarRef = useRef<FullCalendar>(null)
   const [events, setEvents] = useState<CalendarEvent[]>([])
@@ -176,7 +178,7 @@ export function CalendarView({
   useEffect(() => {
     cargarEventos()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filterRecursoId])
+  }, [filterRecursoId, refreshTrigger])
 
   function handleEventClick(info: EventClickArg) {
     const ev = info.event
@@ -200,7 +202,7 @@ export function CalendarView({
     const newStart = info.event.start
     const newEnd = info.event.end
     if (newStart && newEnd) {
-      onEventDrop?.(eventId, newStart, newEnd)
+      onEventDrop?.(eventId, newStart, newEnd, () => info.revert())
     }
   }
 
