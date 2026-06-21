@@ -48,7 +48,7 @@ const roleLabels: Record<string, string> = {
   tecnico: 'Técnico',
 }
 
-export function Sidebar() {
+export function Sidebar({ className }: { className?: string }) {
   const pathname = usePathname()
   const { user, logout } = useAuth()
 
@@ -67,7 +67,7 @@ export function Sidebar() {
   }
 
   return (
-    <aside className="flex h-screen w-64 flex-col border-r bg-sidebar">
+    <aside className={cn("flex h-screen w-64 flex-col border-r bg-sidebar", className)}>
       <div className="flex h-14 items-center border-b px-6 font-semibold text-sm">
         {APP_NAME}
       </div>

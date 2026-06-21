@@ -65,8 +65,8 @@
     "semantic_hash": ""
   },
   "src/app/(app)/layout.tsx": {
-    "mtime": 1782020974.1495144,
-    "ast_hash": "be43a83573bd3bdb57d8314345acaa83",
+    "mtime": 1782077689.820976,
+    "ast_hash": "34963df9e7c6a0cef90e889f6b39e916",
     "semantic_hash": ""
   },
   "src/app/(app)/ordenes-servicio/[id]/page.tsx": {
@@ -205,13 +205,13 @@
     "semantic_hash": ""
   },
   "src/components/layout/Header.tsx": {
-    "mtime": 1781914386.8497365,
-    "ast_hash": "8a05a95b40f3792915438bdd2c80e590",
+    "mtime": 1782077824.7159836,
+    "ast_hash": "c2e0e20a0431d8d5cd23c7b8d0ac9886",
     "semantic_hash": ""
   },
   "src/components/layout/Sidebar.tsx": {
-    "mtime": 1781916692.1180997,
-    "ast_hash": "77ea9b6d98f1c8f967b59fc853329d94",
+    "mtime": 1782077687.368994,
+    "ast_hash": "852c70026c02dfb4fb2aec7084491752",
     "semantic_hash": ""
   },
   "src/components/layout/ThemeToggle.tsx": {
