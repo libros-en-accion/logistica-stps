@@ -2,7 +2,7 @@
 
 import { useEffect, useState, use } from 'react'
 import { useRouter } from 'next/navigation'
-import { ArrowLeft, Trash2, CheckCircle, XCircle } from 'lucide-react'
+import { ArrowLeft, Trash2, CheckCircle, XCircle, Edit } from 'lucide-react'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { StatusBadge } from '@/components/shared/StatusBadge'
@@ -119,6 +119,13 @@ export default function DetalleOrdenPage({ params }: { params: Promise<{ id: str
           <p className="text-muted-foreground">Creada {new Date(os.created_at).toLocaleDateString('es-MX')}</p>
         </div>
         <div className="flex gap-2">
+          {['borrador', 'programada'].includes(os.estado) && (
+            <Link href={`/ordenes-servicio/${id}/editar`}>
+              <Button variant="outline">
+                <Edit className="mr-1 h-4 w-4" /> Editar
+              </Button>
+            </Link>
+          )}
           {os.estado === 'programada' && (
             <Button onClick={() => handleCambiarEstado('en_curso')}>
               <CheckCircle className="mr-1 h-4 w-4" /> Iniciar

@@ -341,7 +341,7 @@ export default function CalendarioPage() {
                 </Button>
                 <Button
                   variant="outline"
-                  onClick={() => router.push(`/ordenes-servicio/${rescheduleState.ordenId}`)}
+                  onClick={() => router.push(`/ordenes-servicio/${rescheduleState.ordenId}/editar`)}
                   disabled={loadingReschedule}
                 >
                   Editar Orden

@@ -19,10 +19,11 @@ import { cn } from '@/lib/utils'
 import { toast } from 'sonner'
 
 interface Props {
+  ordenId?: string
   onSuccess?: () => void
 }
 
-export function OrdenForm({ onSuccess }: Props) {
+export function OrdenForm({ ordenId, onSuccess }: Props) {
   const [step, setStep] = useState(1)
   const [loading, setLoading] = useState(false)
   const [errores, setErrores] = useState<ConflictoDetectado[]>([])
@@ -49,6 +50,61 @@ export function OrdenForm({ onSuccess }: Props) {
     },
   })
 
+  // Cargar datos si estamos en modo edición
+  useEffect(() => {
+    if (!ordenId) return
+
+    async function loadOrdenData() {
+      setLoading(true)
+      try {
+        const { data: orden, error: ordenError } = await supabase
+          .from('ordenes_servicio')
+          .select('*')
+          .eq('id', ordenId)
+          .single()
+
+        if (ordenError || !orden) {
+          throw new Error('No se pudo cargar la orden de servicio')
+        }
+
+        const [t, v, e, n] = await Promise.all([
+          supabase.from('asignaciones_tecnicos').select('tecnico_id').eq('orden_servicio_id', ordenId),
+          supabase.from('asignaciones_vehiculos').select('vehiculo_id').eq('orden_servicio_id', ordenId),
+          supabase.from('asignaciones_equipos').select('equipo_id').eq('orden_servicio_id', ordenId),
+          supabase.from('ordenes_normas').select('norma_id').eq('orden_servicio_id', ordenId),
+        ])
+
+        const formatDatetimeLocal = (isoString: string) => {
+          const d = new Date(isoString)
+          const year = d.getFullYear()
+          const month = String(d.getMonth() + 1).padStart(2, '0')
+          const day = String(d.getDate()).padStart(2, '0')
+          const hours = String(d.getHours()).padStart(2, '0')
+          const minutes = String(d.getMinutes()).padStart(2, '0')
+          return `${year}-${month}-${day}T${hours}:${minutes}`
+        }
+
+        form.reset({
+          cliente_id: orden.cliente_id,
+          direccion_servicio: orden.direccion_servicio || '',
+          fecha_inicio: formatDatetimeLocal(orden.fecha_inicio),
+          fecha_fin: formatDatetimeLocal(orden.fecha_fin),
+          normas_ids: (n.data ?? []).map((r) => r.norma_id),
+          tecnicos_ids: (t.data ?? []).map((r) => r.tecnico_id),
+          vehiculos_ids: (v.data ?? []).map((r) => r.vehiculo_id),
+          equipos_ids: (e.data ?? []).map((r) => r.equipo_id),
+          observaciones: orden.observaciones || '',
+        })
+      } catch (err: any) {
+        toast.error(err.message || 'Error al cargar los datos de la orden')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadOrdenData()
+  }, [ordenId, supabase, form])
+
   const normasIds = form.watch('normas_ids')
   const fechaInicio = form.watch('fecha_inicio')
   const fechaFin = form.watch('fecha_fin')
@@ -70,12 +126,12 @@ export function OrdenForm({ onSuccess }: Props) {
     })
   })
 
-  // Validar automáticamente al llegar al paso 3 (Confirmación)
   useEffect(() => {
     if (step === 3) {
       if (!fechaInicio || !fechaFin) return
 
       const datos = {
+        ordenId,
         fechaInicio: new Date(fechaInicio),
         fechaFin: new Date(fechaFin),
         clienteId: form.getValues('cliente_id'),
@@ -92,12 +148,13 @@ export function OrdenForm({ onSuccess }: Props) {
         setLoading(false)
       })
     }
-  }, [step, fechaInicio, fechaFin, form])
+  }, [step, fechaInicio, fechaFin, form, ordenId])
 
   async function handleValidar() {
     if (!fechaInicio || !fechaFin) return
 
     const datos = {
+      ordenId,
       fechaInicio: new Date(fechaInicio),
       fechaFin: new Date(fechaFin),
       clienteId: form.getValues('cliente_id'),
@@ -115,24 +172,48 @@ export function OrdenForm({ onSuccess }: Props) {
 
     if (result.valido) {
       setLoading(true)
-      let osId: string | null = null
+      let osId: string | null = ordenId || null
       try {
-        // 1. Guardar OS
-        const { data: newOS, error: osError } = await supabase
-          .from('ordenes_servicio')
-          .insert({
-            cliente_id: datos.clienteId,
-            direccion_servicio: form.getValues('direccion_servicio'),
-            fecha_inicio: datos.fechaInicio.toISOString(),
-            fecha_fin: datos.fechaFin.toISOString(),
-            observaciones: form.getValues('observaciones'),
-            estado: 'programada',
-          })
-          .select('id')
-          .single()
+        if (ordenId) {
+          // 1. Actualizar OS existente
+          const { error: osError } = await supabase
+            .from('ordenes_servicio')
+            .update({
+              cliente_id: datos.clienteId,
+              direccion_servicio: form.getValues('direccion_servicio'),
+              fecha_inicio: datos.fechaInicio.toISOString(),
+              fecha_fin: datos.fechaFin.toISOString(),
+              observaciones: form.getValues('observaciones'),
+            })
+            .eq('id', ordenId)
 
-        if (osError) throw new Error(`Error al crear la orden: ${osError.message}`)
-        osId = newOS.id
+          if (osError) throw new Error(`Error al actualizar la orden: ${osError.message}`)
+
+          // 2. Limpiar relaciones viejas para re-insertar
+          await Promise.all([
+            supabase.from('ordenes_normas').delete().eq('orden_servicio_id', ordenId),
+            supabase.from('asignaciones_tecnicos').delete().eq('orden_servicio_id', ordenId),
+            supabase.from('asignaciones_vehiculos').delete().eq('orden_servicio_id', ordenId),
+            supabase.from('asignaciones_equipos').delete().eq('orden_servicio_id', ordenId),
+          ])
+        } else {
+          // 1. Guardar OS nueva
+          const { data: newOS, error: osError } = await supabase
+            .from('ordenes_servicio')
+            .insert({
+              cliente_id: datos.clienteId,
+              direccion_servicio: form.getValues('direccion_servicio'),
+              fecha_inicio: datos.fechaInicio.toISOString(),
+              fecha_fin: datos.fechaFin.toISOString(),
+              observaciones: form.getValues('observaciones'),
+              estado: 'programada',
+            })
+            .select('id')
+            .single()
+
+          if (osError) throw new Error(`Error al crear la orden: ${osError.message}`)
+          osId = newOS.id
+        }
 
         // 2. Guardar normas evaluadas (M:M)
         if (datos.normasIds.length > 0) {
@@ -184,8 +265,8 @@ export function OrdenForm({ onSuccess }: Props) {
 
         onSuccess?.()
       } catch (err: any) {
-        // Rollback: Si se alcanzó a crear la orden pero falló alguna relación, la eliminamos para evitar registros huérfanos
-        if (osId) {
+        // Rollback: Si se alcanzó a crear la orden pero falló alguna relación, la eliminamos para evitar registros huérfanos (solo para orden nueva)
+        if (osId && !ordenId) {
           await supabase.from('ordenes_servicio').delete().eq('id', osId)
         }
         toast.error(err.message || 'Error al guardar la orden de servicio')

@@ -30,8 +30,8 @@
     "semantic_hash": ""
   },
   "src/app/(app)/calendario/page.tsx": {
-    "mtime": 1782067503.7882953,
-    "ast_hash": "369d9340e72175e0659fd3d755161f6f",
+    "mtime": 1782068626.4087996,
+    "ast_hash": "842d87a0acb626dcf1a7f7e114ca2954",
     "semantic_hash": ""
   },
   "src/app/(app)/catalogos/clientes/page.tsx": {
@@ -70,8 +70,8 @@
     "semantic_hash": ""
   },
   "src/app/(app)/ordenes-servicio/[id]/page.tsx": {
-    "mtime": 1782016640.4311194,
-    "ast_hash": "976026ddd35646df8b54848dbe05eec4",
+    "mtime": 1782068620.3568194,
+    "ast_hash": "f83b3f5a7372282be66a81041e844448",
     "semantic_hash": ""
   },
   "src/app/(app)/ordenes-servicio/nueva/page.tsx": {
@@ -225,8 +225,8 @@
     "semantic_hash": ""
   },
   "src/components/ordenes/OrdenForm.tsx": {
-    "mtime": 1782017417.2813978,
-    "ast_hash": "cffb76353c89094bedba40a05a6d1987",
+    "mtime": 1782068609.164856,
+    "ast_hash": "cd8062e11670db44f198a563949587b3",
     "semantic_hash": ""
   },
   "src/components/shared/ConflictAlert.tsx": {
@@ -647,6 +647,11 @@
   ".github/copilot-instructions.md": {
     "mtime": 1781984754.9312744,
     "ast_hash": "ec2dc0dc7bef63488889f34de2f5584d",
+    "semantic_hash": ""
+  },
+  "src/app/(app)/ordenes-servicio/[id]/editar/page.tsx": {
+    "mtime": 1782068615.3048358,
+    "ast_hash": "3d8a904a814ba086a1693fd7adff5c5b",
     "semantic_hash": ""
   }
 }
