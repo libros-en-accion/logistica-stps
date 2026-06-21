@@ -25,12 +25,12 @@ BEGIN
   WHERE at.tecnico_id = p_tecnico_id
     AND os.estado NOT IN ('cancelada', 'completada')
     AND (p_orden_id IS NULL OR os.id != p_orden_id)
-    AND os.fecha_inicio < p_fecha_fin
-    AND os.fecha_fin > p_fecha_inicio
+    AND os.fecha_inicio < p_fecha_fin + INTERVAL '1 hour'
+    AND os.fecha_fin > p_fecha_inicio - INTERVAL '1 hour'
   LIMIT 1;
 
   IF v_conflicto_os IS NOT NULL THEN
-    RETURN QUERY SELECT false, 'Técnico ya asignado a orden de servicio ' || v_conflicto_os;
+    RETURN QUERY SELECT false, 'Técnico ya asignado o en traslado para orden de servicio ' || v_conflicto_os;
     RETURN;
   END IF;
 

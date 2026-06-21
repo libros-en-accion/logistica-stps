@@ -75,8 +75,8 @@ export async function validarDisponibilidadVehiculo(
     .select('orden_servicio_id, ordenes_servicio!inner(folio, fecha_inicio, fecha_fin, estado)')
     .eq('vehiculo_id', vehiculoId)
     .not('ordenes_servicio.estado', 'in', '("cancelada","completada")')
-    .lt('ordenes_servicio.fecha_fin', rango.fin.toISOString())
-    .gt('ordenes_servicio.fecha_inicio', rango.inicio.toISOString())
+    .lt('ordenes_servicio.fecha_inicio', rango.fin.toISOString())
+    .gt('ordenes_servicio.fecha_fin', rango.inicio.toISOString())
 
   if (ordenId) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -89,6 +89,14 @@ export async function validarDisponibilidadVehiculo(
     for (const a of asignaciones) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const os = (a as any).ordenes_servicio
+      const inicioStr = new Date(os.fecha_inicio).toLocaleString('es-MX', {
+        dateStyle: 'short',
+        timeStyle: 'short',
+      })
+      const finStr = new Date(os.fecha_fin).toLocaleString('es-MX', {
+        dateStyle: 'short',
+        timeStyle: 'short',
+      })
       errores.push({
         tipo: 'vehiculo',
         recurso_id: vehiculoId,
@@ -96,7 +104,7 @@ export async function validarDisponibilidadVehiculo(
         motivo: 'ocupado',
         conflicto_con: a.orden_servicio_id,
         fecha_conflicto: os.fecha_inicio,
-        detalle: `Vehículo ya asignado a ${os.folio} (${new Date(os.fecha_inicio).toLocaleDateString()} - ${new Date(os.fecha_fin).toLocaleDateString()})`,
+        detalle: `Vehículo ya asignado a ${os.folio} (${inicioStr} - ${finStr})`,
       })
     }
   }
