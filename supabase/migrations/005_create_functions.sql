@@ -215,8 +215,8 @@ BEGIN
   v_anio := TO_CHAR(now(), 'YYYY');
   v_mes := TO_CHAR(now(), 'MM');
 
-  -- Obtener consecutivo del mes actual
-  SELECT COUNT(*) + 1 INTO v_consecutivo
+  -- Obtener consecutivo más alto del mes actual para evitar duplicados al eliminar
+  SELECT COALESCE(MAX(SUBSTRING(folio FROM '[0-9]+$')::INTEGER), 0) + 1 INTO v_consecutivo
   FROM ordenes_servicio
   WHERE folio LIKE 'OS-' || v_anio || v_mes || '-%';
 
