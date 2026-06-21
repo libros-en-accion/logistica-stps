@@ -133,7 +133,7 @@ BEGIN
   WHERE id = NEW.orden_servicio_id;
 
   SELECT disponible, motivo INTO v_disponible, v_motivo
-  FROM fn_verificar_disponibilidad_tecnico(
+  FROM public.fn_verificar_disponibilidad_tecnico(
     NEW.tecnico_id,
     v_fecha_inicio,
     v_fecha_fin,
@@ -167,7 +167,7 @@ BEGIN
   WHERE id = NEW.orden_servicio_id;
 
   SELECT disponible, motivo INTO v_disponible, v_motivo
-  FROM fn_verificar_disponibilidad_vehiculo(
+  FROM public.fn_verificar_disponibilidad_vehiculo(
     NEW.vehiculo_id,
     v_fecha_inicio,
     v_fecha_fin,
@@ -201,7 +201,7 @@ BEGIN
   WHERE id = NEW.orden_servicio_id;
 
   SELECT disponible, motivo INTO v_disponible, v_motivo
-  FROM fn_verificar_disponibilidad_equipo(
+  FROM public.fn_verificar_disponibilidad_equipo(
     NEW.equipo_id,
     v_fecha_inicio,
     v_fecha_fin,
@@ -227,7 +227,7 @@ LANGUAGE plpgsql
 AS $$
 BEGIN
   IF NEW.folio IS NULL THEN
-    NEW.folio := fn_generar_folio();
+    NEW.folio := public.fn_generar_folio();
   END IF;
   RETURN NEW;
 END;

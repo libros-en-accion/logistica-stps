@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, use } from 'react'
 import { useRouter } from 'next/navigation'
 import { ArrowLeft, Trash2, CheckCircle, XCircle } from 'lucide-react'
 import Link from 'next/link'
@@ -22,7 +22,8 @@ interface OSDetalle {
   created_at: string
 }
 
-export default function DetalleOrdenPage({ params }: { params: { id: string } }) {
+export default function DetalleOrdenPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params)
   const [os, setOs] = useState<OSDetalle | null>(null)
   const [cliente, setCliente] = useState<any>(null)
   const [tecnicos, setTecnicos] = useState<any[]>([])
@@ -37,7 +38,7 @@ export default function DetalleOrdenPage({ params }: { params: { id: string } })
       const { data: orden } = await supabase
         .from('ordenes_servicio')
         .select('*, clientes!inner(id, razon_social, rfc, direccion)')
-        .eq('id', params.id)
+        .eq('id', id)
         .single()
 
       if (!orden) {
@@ -49,9 +50,9 @@ export default function DetalleOrdenPage({ params }: { params: { id: string } })
       setCliente((orden as any).clientes)
 
       const [t, v, e] = await Promise.all([
-        supabase.from('asignaciones_tecnicos').select('tecnico_id, tecnicos!inner(id, nombre, apellidos, rfc)').eq('orden_servicio_id', params.id),
-        supabase.from('asignaciones_vehiculos').select('vehiculo_id, vehiculos!inner(id, numero_unidad, marca, modelo, placas)').eq('orden_servicio_id', params.id),
-        supabase.from('asignaciones_equipos').select('equipo_id, equipos_medicion!inner(id, id_interno, descripcion, vigencia_calibracion)').eq('orden_servicio_id', params.id),
+        supabase.from('asignaciones_tecnicos').select('tecnico_id, tecnicos!inner(id, nombre, apellidos, rfc)').eq('orden_servicio_id', id),
+        supabase.from('asignaciones_vehiculos').select('vehiculo_id, vehiculos!inner(id, numero_unidad, marca, modelo, placas)').eq('orden_servicio_id', id),
+        supabase.from('asignaciones_equipos').select('equipo_id, equipos_medicion!inner(id, id_interno, descripcion, vigencia_calibracion)').eq('orden_servicio_id', id),
       ])
 
       setTecnicos((t.data ?? []).map((r: any) => r.tecnicos))
@@ -61,13 +62,13 @@ export default function DetalleOrdenPage({ params }: { params: { id: string } })
     }
 
     load()
-  }, [params.id, supabase])
+  }, [id, supabase])
 
   async function handleCambiarEstado(nuevoEstado: string) {
     const { error } = await supabase
       .from('ordenes_servicio')
       .update({ estado: nuevoEstado })
-      .eq('id', params.id)
+      .eq('id', id)
 
     if (error) {
       toast.error('Error al actualizar estado')
