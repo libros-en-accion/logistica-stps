@@ -134,7 +134,7 @@ export default function DetalleOrdenPage({ params }: { params: Promise<{ id: str
               <XCircle className="mr-1 h-4 w-4" /> Cancelar
             </Button>
           )}
-          {['borrador', 'programada', 'cancelada'].includes(os.estado) && (
+          {['borrador', 'programada', 'cancelada', 'completada'].includes(os.estado) && (
             <Button variant="outline" className="text-destructive hover:bg-destructive/10 border-destructive/20" onClick={handleEliminar}>
               <Trash2 className="mr-1 h-4 w-4" /> Eliminar
             </Button>
