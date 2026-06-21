@@ -29,6 +29,11 @@ export default function TecnicosPage() {
   const [selectedNormasIds, setSelectedNormasIds] = useState<string[]>([])
   const [saving, setSaving] = useState(false)
 
+  // Cargar técnicos al montar la página
+  useEffect(() => {
+    crud.fetchAll()
+  }, [crud.fetchAll])
+
   // Cargar normas activas al montar la página
   useEffect(() => {
     supabase
