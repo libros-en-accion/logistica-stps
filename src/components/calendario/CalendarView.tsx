@@ -71,7 +71,17 @@ export function CalendarView({
 }: CalendarViewProps) {
   const calendarRef = useRef<FullCalendar>(null)
   const [events, setEvents] = useState<CalendarEvent[]>([])
+  const [isMobile, setIsMobile] = useState(false)
   const supabase = createClient()
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   async function cargarEventos() {
     const todos: CalendarEvent[] = []
@@ -207,12 +217,16 @@ export function CalendarView({
   }
 
   return (
-    <div className="calendar-container bg-background rounded-lg border p-4">
+    <div className="calendar-container bg-background rounded-lg border p-2 md:p-4 [&_.fc-header-toolbar]:flex-wrap [&_.fc-header-toolbar]:gap-2 [&_.fc-toolbar-chunk]:text-xs md:[&_.fc-toolbar-chunk]:text-sm [&_.fc-toolbar-title]:text-sm md:[&_.fc-toolbar-title]:text-lg">
       <FullCalendar
         ref={calendarRef}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
         initialView="dayGridMonth"
-        headerToolbar={{
+        headerToolbar={isMobile ? {
+          left: 'prev,next',
+          center: 'title',
+          right: 'dayGridMonth,listWeek'
+        } : {
           left: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
           center: 'title',
           right: 'prev,today,next',

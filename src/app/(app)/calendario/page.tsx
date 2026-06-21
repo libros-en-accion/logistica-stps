@@ -222,8 +222,8 @@ export default function CalendarioPage() {
         <p className="text-muted-foreground">Vista interactiva de órdenes y bloqueos</p>
       </div>
 
-      <div className="flex gap-6">
-        <div className="w-48 shrink-0">
+      <div className="flex flex-col md:flex-row gap-6">
+        <div className="w-full md:w-48 shrink-0">
           <CalendarFilters />
         </div>
         <div className="flex-1 min-w-0">

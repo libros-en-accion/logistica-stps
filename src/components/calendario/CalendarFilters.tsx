@@ -2,10 +2,10 @@
 
 export function CalendarFilters() {
   return (
-    <div className="space-y-4">
-      <div>
+    <div className="flex flex-col sm:flex-row md:flex-col gap-4 md:gap-6">
+      <div className="flex-1">
         <h4 className="text-sm font-medium mb-2">Leyenda</h4>
-        <div className="space-y-1.5 text-xs">
+        <div className="grid grid-cols-2 gap-1.5 text-xs sm:grid-cols-3 md:grid-cols-1">
           <div className="flex items-center gap-2">
             <div className="h-3 w-3 rounded bg-[#3b82f6]" />
             <span>Orden programada</span>
@@ -32,7 +32,7 @@ export function CalendarFilters() {
           </div>
         </div>
       </div>
-      <div>
+      <div className="flex-1">
         <h4 className="text-sm font-medium mb-2">Tipos</h4>
         <div className="space-y-1.5 text-xs text-muted-foreground">
           <p>Click en evento → ver detalle</p>
