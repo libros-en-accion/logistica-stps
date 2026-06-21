@@ -65,8 +65,8 @@
     "semantic_hash": ""
   },
   "src/app/(app)/layout.tsx": {
-    "mtime": 1781914392.493725,
-    "ast_hash": "f80165a2f0fb605de5068cef3589c0e1",
+    "mtime": 1782020974.1495144,
+    "ast_hash": "be43a83573bd3bdb57d8314345acaa83",
     "semantic_hash": ""
   },
   "src/app/(app)/ordenes-servicio/[id]/page.tsx": {
@@ -370,8 +370,8 @@
     "semantic_hash": ""
   },
   "src/hooks/useAuth.ts": {
-    "mtime": 1781916659.6341875,
-    "ast_hash": "57238de29b079fdfd89e04b50adab1ce",
+    "mtime": 1782020977.5535069,
+    "ast_hash": "0de3295022e9f8e1bbe0b34d981a8cdb",
     "semantic_hash": ""
   },
   "src/hooks/useCRUD.ts": {

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { useAuthStore } from '@/stores/auth-store'
 import type { PerfilUsuario } from '@/types/database.types'
@@ -9,6 +10,7 @@ export function useAuth() {
   const { user, isLoading, isAuthenticated, setUser, setLoading, reset } =
     useAuthStore()
   const supabase = createClient()
+  const router = useRouter()
 
   useEffect(() => {
     const {
@@ -76,6 +78,7 @@ export function useAuth() {
   async function logout() {
     await supabase.auth.signOut()
     reset()
+    router.push('/login')
   }
 
   function hasRole(...roles: PerfilUsuario['rol'][]) {
