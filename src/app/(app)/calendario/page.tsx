@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
 import { CalendarFilters } from '@/components/calendario/CalendarFilters'
@@ -8,6 +8,7 @@ import { EventDetailPanel } from '@/components/calendario/EventDetailPanel'
 import { toast } from 'sonner'
 import { createClient } from '@/lib/supabase/client'
 import { validarOrdenServicio } from '@/lib/validations/motor-validacion'
+import { useAuth } from '@/hooks/useAuth'
 import {
   Dialog,
   DialogContent,
@@ -59,8 +60,51 @@ export default function CalendarioPage() {
   const [confirmDialogOpen, setConfirmDialogOpen] = useState(false)
   const [loadingReschedule, setLoadingReschedule] = useState(false)
   const [refreshTrigger, setRefreshTrigger] = useState(0)
+
+  const { user } = useAuth()
+  const [tecnicos, setTecnicos] = useState<{ id: string; nombre: string; apellidos: string }[]>([])
+  const [selectedTecnicoId, setSelectedTecnicoId] = useState<string>('')
+  const [tecnicoNombre, setTecnicoNombre] = useState<string>('')
   
   const router = useRouter()
+
+  // Cargar catálogo de técnicos para filtros
+  useEffect(() => {
+    const supabase = createClient()
+    supabase
+      .from('tecnicos')
+      .select('id, nombre, apellidos')
+      .eq('activo', true)
+      .order('apellidos')
+      .then(({ data }) => {
+        setTecnicos(data ?? [])
+      })
+  }, [])
+
+  // Resolver técnico logueado si tiene rol de técnico
+  useEffect(() => {
+    if (!user || user.rol !== 'tecnico') return
+
+    const supabase = createClient()
+
+    async function resolveTecnico() {
+      const { data: { user: authUser } } = await supabase.auth.getUser()
+      if (authUser?.email) {
+        const { data: tecnico } = await supabase
+          .from('tecnicos')
+          .select('id, nombre, apellidos')
+          .eq('email', authUser.email)
+          .maybeSingle()
+
+        if (tecnico) {
+          setSelectedTecnicoId(tecnico.id)
+          setTecnicoNombre(`${tecnico.nombre} ${tecnico.apellidos}`)
+        }
+      }
+    }
+
+    resolveTecnico()
+  }, [user])
 
   function handleEventClick(event: PanelEvent) {
     setSelectedEvent(event)
@@ -224,13 +268,19 @@ export default function CalendarioPage() {
 
       <div className="flex flex-col md:flex-row gap-6">
         <div className="w-full md:w-48 shrink-0">
-          <CalendarFilters />
+          <CalendarFilters
+            tecnicos={tecnicos}
+            selectedTecnicoId={selectedTecnicoId}
+            onFilterChange={setSelectedTecnicoId}
+            tecnicoNombre={tecnicoNombre}
+          />
         </div>
         <div className="flex-1 min-w-0">
           <CalendarView
             onEventClick={handleEventClick}
             onDateSelect={handleDateSelect}
             onEventDrop={handleEventDrop}
+            filterRecursoId={selectedTecnicoId}
             refreshTrigger={refreshTrigger}
           />
         </div>

@@ -87,10 +87,23 @@ export function CalendarView({
     const todos: CalendarEvent[] = []
 
     // Órdenes de servicio
-    const { data: ordenes } = await supabase
-      .from('ordenes_servicio')
-      .select('id, folio, fecha_inicio, fecha_fin, estado, clientes!inner(razon_social)')
-      .not('estado', 'eq', 'cancelada')
+    let ordenes: any[] | null = null
+
+    if (filterRecursoId) {
+      // Filtrar por técnico usando inner join en asignaciones_tecnicos
+      const { data } = await supabase
+        .from('ordenes_servicio')
+        .select('id, folio, fecha_inicio, fecha_fin, estado, clientes!inner(razon_social), asignaciones_tecnicos!inner(tecnico_id)')
+        .eq('asignaciones_tecnicos.tecnico_id', filterRecursoId)
+        .not('estado', 'eq', 'cancelada')
+      ordenes = data
+    } else {
+      const { data } = await supabase
+        .from('ordenes_servicio')
+        .select('id, folio, fecha_inicio, fecha_fin, estado, clientes!inner(razon_social)')
+        .not('estado', 'eq', 'cancelada')
+      ordenes = data
+    }
 
     if (ordenes) {
       for (const os of ordenes as any[]) {
@@ -111,10 +124,16 @@ export function CalendarView({
     }
 
     // Bloqueos de técnicos
-    const { data: bloqueosTec } = await supabase
+    let bloqueosTecQuery = supabase
       .from('bloqueos_recursos')
       .select('*, tecnicos!inner(nombre, apellidos)')
       .eq('tipo_recurso', 'tecnico')
+
+    if (filterRecursoId) {
+      bloqueosTecQuery = bloqueosTecQuery.eq('recurso_id', filterRecursoId)
+    }
+
+    const { data: bloqueosTec } = await bloqueosTecQuery
 
     if (bloqueosTec) {
       for (const b of bloqueosTec as any[]) {
@@ -134,11 +153,15 @@ export function CalendarView({
       }
     }
 
-    // Bloqueos de vehículos
-    const { data: bloqueosVeh } = await supabase
-      .from('bloqueos_recursos')
-      .select('*, vehiculos!inner(numero_unidad)')
-      .eq('tipo_recurso', 'vehiculo')
+    // Bloqueos de vehículos (solo si no hay filtro de técnico)
+    let bloqueosVeh = null
+    if (!filterRecursoId) {
+      const { data } = await supabase
+        .from('bloqueos_recursos')
+        .select('*, vehiculos!inner(numero_unidad)')
+        .eq('tipo_recurso', 'vehiculo')
+      bloqueosVeh = data
+    }
 
     if (bloqueosVeh) {
       for (const b of bloqueosVeh as any[]) {
@@ -158,11 +181,15 @@ export function CalendarView({
       }
     }
 
-    // Bloqueos de equipos
-    const { data: bloqueosEq } = await supabase
-      .from('bloqueos_recursos')
-      .select('*, equipos_medicion!inner(id_interno, descripcion)')
-      .eq('tipo_recurso', 'equipo')
+    // Bloqueos de equipos (solo si no hay filtro de técnico)
+    let bloqueosEq = null
+    if (!filterRecursoId) {
+      const { data } = await supabase
+        .from('bloqueos_recursos')
+        .select('*, equipos_medicion!inner(id_interno, descripcion)')
+        .eq('tipo_recurso', 'equipo')
+      bloqueosEq = data
+    }
 
     if (bloqueosEq) {
       for (const b of bloqueosEq as any[]) {

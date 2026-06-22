@@ -897,7 +897,7 @@
       "label": "CalendarView",
       "file_type": "code",
       "source_file": "src/app/(app)/calendario/page.tsx",
-      "source_location": "L22",
+      "source_location": "L23",
       "_origin": "ast",
       "id": "calendario_page_calendarview",
       "community": 8,
@@ -907,7 +907,7 @@
       "label": "PanelEvent",
       "file_type": "code",
       "source_file": "src/app/(app)/calendario/page.tsx",
-      "source_location": "L30",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "calendario_page_panelevent",
       "community": 8,
@@ -917,7 +917,7 @@
       "label": "RescheduleState",
       "file_type": "code",
       "source_file": "src/app/(app)/calendario/page.tsx",
-      "source_location": "L46",
+      "source_location": "L47",
       "_origin": "ast",
       "id": "calendario_page_reschedulestate",
       "community": 8,
@@ -927,10 +927,10 @@
       "label": "CalendarioPage()",
       "file_type": "code",
       "source_file": "src/app/(app)/calendario/page.tsx",
-      "source_location": "L56",
+      "source_location": "L57",
       "_origin": "ast",
       "id": "calendario_page_calendariopage",
-      "community": 8,
+      "community": 14,
       "norm_label": "calendariopage()"
     },
     {
@@ -1190,7 +1190,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "id_page_detalleordenpage",
-      "community": 3,
+      "community": 1,
       "norm_label": "detalleordenpage()"
     },
     {
@@ -1240,7 +1240,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "ordenes_servicio_page_ordenesserviciopage",
-      "community": 0,
+      "community": 1,
       "norm_label": "ordenesserviciopage()"
     },
     {
@@ -1480,17 +1480,27 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "calendario_calendarfilters",
-      "community": 8,
+      "community": 4,
       "norm_label": "calendarfilters.tsx"
+    },
+    {
+      "label": "CalendarFiltersProps",
+      "file_type": "code",
+      "source_file": "src/components/calendario/CalendarFilters.tsx",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "calendario_calendarfilters_calendarfiltersprops",
+      "community": 4,
+      "norm_label": "calendarfiltersprops"
     },
     {
       "label": "CalendarFilters()",
       "file_type": "code",
       "source_file": "src/components/calendario/CalendarFilters.tsx",
-      "source_location": "L3",
+      "source_location": "L13",
       "_origin": "ast",
       "id": "calendario_calendarfilters_calendarfilters",
-      "community": 8,
+      "community": 14,
       "norm_label": "calendarfilters()"
     },
     {
@@ -1560,7 +1570,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "calendario_eventdetailpanel",
-      "community": 0,
+      "community": 8,
       "norm_label": "eventdetailpanel.tsx"
     },
     {
@@ -1570,7 +1580,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "calendario_eventdetailpanel_panelevent",
-      "community": 0,
+      "community": 8,
       "norm_label": "panelevent"
     },
     {
@@ -1580,7 +1590,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "calendario_eventdetailpanel_eventdetailpanelprops",
-      "community": 0,
+      "community": 8,
       "norm_label": "eventdetailpanelprops"
     },
     {
@@ -1590,7 +1600,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "calendario_eventdetailpanel_eventdetailpanel",
-      "community": 0,
+      "community": 8,
       "norm_label": "eventdetailpanel()"
     },
     {
@@ -1620,7 +1630,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "catalogos_clienteform_clienteform",
-      "community": 0,
+      "community": 4,
       "norm_label": "clienteform()"
     },
     {
@@ -1650,7 +1660,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "catalogos_equipoform_equipoform",
-      "community": 0,
+      "community": 4,
       "norm_label": "equipoform()"
     },
     {
@@ -1680,7 +1690,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "catalogos_normaform_normaform",
-      "community": 0,
+      "community": 4,
       "norm_label": "normaform()"
     },
     {
@@ -1710,7 +1720,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "catalogos_tecnicoform_tecnicoform",
-      "community": 0,
+      "community": 4,
       "norm_label": "tecnicoform()"
     },
     {
@@ -1810,7 +1820,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "dashboard_kpicard",
-      "community": 1,
+      "community": 13,
       "norm_label": "kpicard.tsx"
     },
     {
@@ -1820,7 +1830,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "dashboard_kpicard_kpicardprops",
-      "community": 1,
+      "community": 13,
       "norm_label": "kpicardprops"
     },
     {
@@ -1830,7 +1840,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "dashboard_kpicard_kpicard",
-      "community": 1,
+      "community": 13,
       "norm_label": "kpicard()"
     },
     {
@@ -2280,7 +2290,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "shared_resourceavailabilityindicator_resourceavailabilityindicator",
-      "community": 13,
+      "community": 1,
       "norm_label": "resourceavailabilityindicator()"
     },
     {
@@ -2310,7 +2320,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "shared_resourcestatuspanel_resourcestatuspanel",
-      "community": 3,
+      "community": 1,
       "norm_label": "resourcestatuspanel()"
     },
     {
@@ -3090,7 +3100,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_input",
-      "community": 4,
+      "community": 3,
       "norm_label": "input.tsx"
     },
     {
@@ -3100,7 +3110,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "ui_input_input",
-      "community": 4,
+      "community": 3,
       "norm_label": "input()"
     },
     {
@@ -6622,6 +6632,28 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "calendario_page",
+      "target": "hooks_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "calendario_page",
+      "target": "hooks_useauth_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(app)/calendario/page.tsx",
       "source_location": "L9",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -6759,6 +6791,17 @@
       "confidence_score": 1.0,
       "source": "calendario_page",
       "target": "validations_motor_validacion_validarordenservicio"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/(app)/calendario/page.tsx",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "calendario_page_calendariopage",
+      "target": "hooks_useauth_useauth"
     },
     {
       "relation": "imports_from",
@@ -9611,6 +9654,71 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/components/calendario/CalendarFilters.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "calendario_calendarfilters",
+      "target": "calendario_calendarfilters_calendarfiltersprops",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/calendario/CalendarFilters.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "calendario_calendarfilters",
+      "target": "hooks_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/calendario/CalendarFilters.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "calendario_calendarfilters",
+      "target": "hooks_useauth_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/calendario/CalendarFilters.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "calendario_calendarfilters",
+      "target": "ui_label",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/calendario/CalendarFilters.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "calendario_calendarfilters",
+      "target": "ui_label_label",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/calendario/CalendarFilters.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "calendario_calendarfilters_calendarfilters",
+      "target": "hooks_useauth_useauth"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/components/calendario/CalendarView.tsx",
       "source_location": "L13",
       "weight": 1.0,
@@ -10784,9 +10892,9 @@
       "source_file": "src/components/layout/Header.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "layout_header",
-      "target": "layout_sidebar",
-      "confidence_score": 1.0
+      "target": "layout_sidebar"
     },
     {
       "relation": "imports",
@@ -10795,9 +10903,9 @@
       "source_file": "src/components/layout/Header.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "layout_header",
-      "target": "layout_sidebar_sidebar",
-      "confidence_score": 1.0
+      "target": "layout_sidebar_sidebar"
     },
     {
       "relation": "imports_from",
@@ -10850,9 +10958,9 @@
       "source_file": "src/components/layout/Header.tsx",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "layout_header",
-      "target": "ui_button",
-      "confidence_score": 1.0
+      "target": "ui_button"
     },
     {
       "relation": "imports",
@@ -10861,9 +10969,9 @@
       "source_file": "src/components/layout/Header.tsx",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "layout_header",
-      "target": "ui_button_button",
-      "confidence_score": 1.0
+      "target": "ui_button_button"
     },
     {
       "relation": "imports_from",
@@ -10872,9 +10980,9 @@
       "source_file": "src/components/layout/Header.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "layout_header",
-      "target": "ui_sheet",
-      "confidence_score": 1.0
+      "target": "ui_sheet"
     },
     {
       "relation": "imports",
@@ -10883,9 +10991,9 @@
       "source_file": "src/components/layout/Header.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "layout_header",
-      "target": "ui_sheet_sheet",
-      "confidence_score": 1.0
+      "target": "ui_sheet_sheet"
     },
     {
       "relation": "imports",
@@ -10894,9 +11002,9 @@
       "source_file": "src/components/layout/Header.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "layout_header",
-      "target": "ui_sheet_sheetcontent",
-      "confidence_score": 1.0
+      "target": "ui_sheet_sheetcontent"
     },
     {
       "relation": "imports",
@@ -10905,9 +11013,9 @@
       "source_file": "src/components/layout/Header.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "layout_header",
-      "target": "ui_sheet_sheettrigger",
-      "confidence_score": 1.0
+      "target": "ui_sheet_sheettrigger"
     },
     {
       "relation": "imports_from",
@@ -17448,5 +17556,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "905de40d3b19363d7943dffd879b9bf10743a27f"
+  "built_at_commit": "c4eba5f8af11b90ddcb03c6c37d0e96e92157a80"
 }

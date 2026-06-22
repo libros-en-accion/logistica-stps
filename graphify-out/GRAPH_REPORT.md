@@ -1,16 +1,16 @@
 # Graph Report - 006_LOGISTICA  (2026-06-21)
 
 ## Corpus Check
-- 116 files · ~29,155 words
+- 116 files · ~29,570 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 548 nodes · 1126 edges · 41 communities (30 shown, 11 thin omitted)
+- 549 nodes · 1135 edges · 41 communities (30 shown, 11 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `905de40d`
+- Built from commit: `c4eba5f8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -57,23 +57,23 @@
 2. `createClient()` - 39 edges
 3. `Button()` - 27 edges
 4. `compilerOptions` - 16 edges
-5. `Input()` - 14 edges
-6. `Card()` - 13 edges
-7. `CardHeader()` - 13 edges
-8. `CardTitle()` - 13 edges
-9. `CardContent()` - 13 edges
-10. `Label()` - 12 edges
+5. `useAuth()` - 15 edges
+6. `Input()` - 14 edges
+7. `Card()` - 13 edges
+8. `CardHeader()` - 13 edges
+9. `CardTitle()` - 13 edges
+10. `CardContent()` - 13 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `BloqueosPage()` --calls--> `createClient()`  [EXTRACTED]
   src/app/(app)/bloqueos/page.tsx → src/lib/supabase/client.ts
-- `DetalleOrdenPage()` --calls--> `createClient()`  [EXTRACTED]
-  src/app/(app)/ordenes-servicio/[id]/page.tsx → src/lib/supabase/client.ts
-- `OrdenesServicioPage()` --calls--> `createClient()`  [EXTRACTED]
-  src/app/(app)/ordenes-servicio/page.tsx → src/lib/supabase/client.ts
-- `ResourceStatusPanel()` --calls--> `createClient()`  [EXTRACTED]
-  src/components/shared/ResourceStatusPanel.tsx → src/lib/supabase/client.ts
 - `AvatarImage()` --calls--> `cn()`  [EXTRACTED]
+  src/components/ui/avatar.tsx → src/lib/utils.ts
+- `AvatarBadge()` --calls--> `cn()`  [EXTRACTED]
+  src/components/ui/avatar.tsx → src/lib/utils.ts
+- `AvatarGroup()` --calls--> `cn()`  [EXTRACTED]
+  src/components/ui/avatar.tsx → src/lib/utils.ts
+- `AvatarGroupCount()` --calls--> `cn()`  [EXTRACTED]
   src/components/ui/avatar.tsx → src/lib/utils.ts
 
 ## Import Cycles
@@ -82,24 +82,24 @@
 ## Communities (41 total, 11 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.07
-Nodes (45): EventDetailPanel(), EventDetailPanelProps, PanelEvent, ClienteForm(), EquipoForm(), NormaForm(), TecnicoForm(), ClientesPage() (+37 more)
+Cohesion: 0.10
+Nodes (37): ClientesPage(), columns, columns, EquiposPage(), useCRUD(), UseCRUDOptions, columns, NormasPage() (+29 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.08
-Nodes (37): CalendarEvent, CalendarView(), CalendarViewProps, colorMap, textColorMap, Actividad, ActividadReciente(), Alerta (+29 more)
+Cohesion: 0.07
+Nodes (39): CalendarEvent, CalendarView(), CalendarViewProps, colorMap, textColorMap, Actividad, ActividadReciente(), Alerta (+31 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.16
 Nodes (11): DropdownMenu(), DropdownMenuCheckboxItem(), DropdownMenuContent(), DropdownMenuItem(), DropdownMenuLabel(), DropdownMenuRadioItem(), DropdownMenuSeparator(), DropdownMenuShortcut() (+3 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.14
-Nodes (17): OcupacionChart, ServiciosChart, DetalleOrdenPage(), OSDetalle, ESTADOS_OS, ESTADOS_RECURSO, ROLES, TIPOS_BLOQUEO (+9 more)
+Cohesion: 0.15
+Nodes (16): OcupacionChart, ServiciosChart, OSDetalle, ESTADOS_OS, ESTADOS_RECURSO, ROLES, TIPOS_BLOQUEO, TIPOS_RECURSO (+8 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.11
-Nodes (25): BloqueoRow, BloqueosPage(), tipoBloqueoLabel, tipoRecursoLabel, Props, Props, Props, Props (+17 more)
+Cohesion: 0.09
+Nodes (29): BloqueoRow, BloqueosPage(), tipoBloqueoLabel, tipoRecursoLabel, CalendarFiltersProps, ClienteForm(), Props, EquipoForm() (+21 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.05
@@ -115,7 +115,7 @@ Nodes (25): 1.1 Clonar e instalar, 1.2 Variables de entorno, 1.3 Iniciar servido
 
 ### Community 8 - "Community 8"
 Cohesion: 0.10
-Nodes (19): CalendarFilters(), CalendarView, PanelEvent, RescheduleState, ErrorBoundary, Props, State, FormDialogProps (+11 more)
+Nodes (21): EventDetailPanel(), EventDetailPanelProps, PanelEvent, CalendarView, PanelEvent, RescheduleState, ErrorBoundary, Props (+13 more)
 
 ### Community 9 - "Community 9"
 Cohesion: 0.09
@@ -134,12 +134,12 @@ Cohesion: 0.15
 Nodes (12): Acceso al sistema, Atajos, Bloqueos (`/bloqueos`), Calendario (`/calendario`), Catálogos (`/catalogos/*`), Dashboard (`/dashboard`), Manual del Sistema STPS Logística, Módulos (+4 more)
 
 ### Community 13 - "Community 13"
-Cohesion: 0.24
-Nodes (8): config, ResourceAvailabilityIndicator(), ResourceAvailabilityIndicatorProps, Separator(), Tooltip(), TooltipContent(), TooltipProvider(), TooltipTrigger()
+Cohesion: 0.20
+Nodes (9): KPICard(), KPICardProps, config, ResourceAvailabilityIndicatorProps, Separator(), Tooltip(), TooltipContent(), TooltipProvider() (+1 more)
 
 ### Community 14 - "Community 14"
-Cohesion: 0.10
-Nodes (23): useAuth(), Header(), navItems, roleLabels, Sidebar(), ThemeToggle(), UserMenu(), LoginPage() (+15 more)
+Cohesion: 0.09
+Nodes (25): CalendarFilters(), CalendarioPage(), useAuth(), Header(), navItems, roleLabels, Sidebar(), ThemeToggle() (+17 more)
 
 ### Community 15 - "Community 15"
 Cohesion: 0.29
@@ -182,7 +182,7 @@ Cohesion: 0.40
 Nodes (5): Tabs(), TabsContent(), TabsList(), tabsListVariants, TabsTrigger()
 
 ## Knowledge Gaps
-- **207 isolated node(s):** `$schema`, `style`, `rsc`, `tsx`, `config` (+202 more)
+- **208 isolated node(s):** `$schema`, `style`, `rsc`, `tsx`, `config` (+203 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -190,16 +190,16 @@ Nodes (5): Tabs(), TabsContent(), TabsList(), tabsListVariants, TabsTrigger()
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `cn()` connect `Community 10` to `Community 0`, `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 8`, `Community 40`, `Community 13`, `Community 14`, `Community 15`, `Community 16`, `Community 17`, `Community 20`?**
-  _High betweenness centrality (0.176) - this node is a cross-community bridge._
+  _High betweenness centrality (0.175) - this node is a cross-community bridge._
 - **Why does `createClient()` connect `Community 1` to `Community 0`, `Community 3`, `Community 4`, `Community 8`, `Community 14`?**
-  _High betweenness centrality (0.050) - this node is a cross-community bridge._
+  _High betweenness centrality (0.049) - this node is a cross-community bridge._
 - **Why does `Button()` connect `Community 8` to `Community 0`, `Community 1`, `Community 3`, `Community 4`, `Community 10`, `Community 14`, `Community 16`, `Community 17`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
+  _High betweenness centrality (0.026) - this node is a cross-community bridge._
 - **What connects `$schema`, `style`, `rsc` to the rest of the system?**
-  _207 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _208 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.07393483709273183 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09574468085106383 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.07676767676767676 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07402597402597402 - nodes in this community are weakly interconnected._
 - **Should `Community 3` be split into smaller, more focused modules?**
-  _Cohesion score 0.13949579831932774 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.14789915966386555 - nodes in this community are weakly interconnected._
